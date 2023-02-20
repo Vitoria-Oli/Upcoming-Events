@@ -5,27 +5,26 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "freeplaces")
-public class FreePlaces {
+@Table(name = "places")
+public class Places {
     
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_freeplaces")
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name = "id_places")
     private Long id;
+    @Column(nullable = false)
+    private int capacity;
     @Column(nullable = false)
     private int freeplaces;
     
-    @OneToOne 
-    private Event event;
-    
-    public FreePlaces() {
+    public Places() {
     }
-
-    public FreePlaces(Long id, int freeplaces) {
+    
+    public Places(Long id, int freeplaces, int capacity) {
         this.id = id;
         this.freeplaces = freeplaces;
+        this.capacity = capacity;    
     }
 
     public Long getId() {
@@ -44,4 +43,11 @@ public class FreePlaces {
         this.freeplaces = freeplaces;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
 }
