@@ -11,3 +11,8 @@ INSERT INTO images (id_image, name, id_event) VALUES(default, 'Una más', 1)
 INSERT INTO images (id_image, name, id_event) VALUES(default, 'Una máde además', 1)
 INSERT INTO images (id_image, name, id_event) VALUES(default, 'Otra', 2)
 INSERT INTO images (id_image, name, id_event) VALUES(default, 'Una otra', 3)
+
+
+INSERT INTO users(id_user, name, email, password) VALUES(default, 'Pepin','yuer@.es','65473')
+INSERT INTO users(id_user, name, email, password) VALUES(default, 'Paco','yuuro@.es','65473')
+INSERT INTO users(id_user, name, email, password) VALUES(default, 'Pon','kerar@.es','65473')
