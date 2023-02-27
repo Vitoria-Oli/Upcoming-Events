@@ -7,31 +7,33 @@
     <v-card 
     class="mx-auto"
     max-width="400"
-    id="CardPrincipal"
+    id="Card"
   >
     <v-img
       class="align-end"
       height="200"
       cover
     >
-    <img src="../assets/img/ConciertoBrillo.png" alt="Concierto" id="Concierto" class="CardSize">
+    <img src="../assets/img/ConciertoBrillo.png" alt="Concierto" id="photo" class="CardSize">
 
       <v-card-subtitle id="date" class="text-subtitle-1">10/12/2023 - 21:30</v-card-subtitle>
     </v-img>
 
-    <v-card-title class="pt-4" >
+    <v-card-title class="pt-4" id="EventTitle">
       Nuestros recomendados
     </v-card-title>
 
     <v-card-text>
-      <div>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus impedit consequuntur nihil? Nihil, iste ad!</div>
+      <div class="EventDescription"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus impedit consequuntur nihil? Nihil, iste ad!</p></div>
 
       <div class="VerMas"><a href="#">>>> ver más</a></div>
+
+      <div class="Quotas"><p>Quedan <b>12</b> plazas de <b>150</b></p></div>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn color="orange">
-        Share
+      <v-btn color="orange" id="Apuntame">
+        ¡Apúntame!
       </v-btn>
 
     </v-card-actions>
@@ -42,15 +44,21 @@
 <style lang="scss" scoped>
 
 
-  #CardPrincipal{
+  #Card{
     font-family: Dosis;
-    #concierto{
+    #photo{
         height: 200px;
         width: 400px;
     }
     .VerMas{
       display: flex;
       justify-content: flex-end;
+    }
+    .Quotas{
+      margin: auto;
+    }
+    #Apuntame{
+      margin: auto;
     }
     }
 </style>
