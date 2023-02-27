@@ -1,5 +1,4 @@
 package com.events.upcoming.services;
-
 import org.springframework.stereotype.Service;
 import com.events.upcoming.models.User;
 import com.events.upcoming.repositories.UserRepository;
@@ -30,4 +29,9 @@ public class UserService {
         User newuser=repository.save(user);
         return newuser;
     }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
 }
