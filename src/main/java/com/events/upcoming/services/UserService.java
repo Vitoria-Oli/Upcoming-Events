@@ -20,4 +20,14 @@ public class UserService {
     public List<User> getAll() {
         return repository.findAll();
     }
+
+    public User getOne(Long id) {
+        User user = repository.findById(id).orElse(null);
+        return user;
+       
+    }
+    public User save(User user){
+        User newuser=repository.save(user);
+        return newuser;
+    }
 }
