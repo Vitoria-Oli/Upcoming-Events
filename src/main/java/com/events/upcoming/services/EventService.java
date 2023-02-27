@@ -18,4 +18,19 @@ public class EventService {
     public List<Event> getAll() {
         return repository.findAll();
     }
+
+    public Event getOne(Long id) {
+        Event event = repository.findById(id).orElse(null);
+        return event;
+    }
+
+    public void delete(Long id) {
+        repository.deleteById(id);
+    }
+
+    public Event save(Event event) {
+        Event newevent=repository.save(event);
+        return newevent;
+    }
+
 }
