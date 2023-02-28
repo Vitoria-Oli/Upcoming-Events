@@ -30,9 +30,11 @@ public class Event {
     private java.time.LocalTime hour;
     @Column(nullable = false)
     private boolean recommended;
-    
-    @OneToOne 
-    private Places places;
+    @Column(nullable = false)
+    private Long capacity;
+
+
+   
 
     @OneToMany
     @JoinColumn(name = "id_event")
@@ -42,17 +44,18 @@ public class Event {
     }
 
     public Event(Long id, String name, String description, LocalDate date, LocalTime hour, boolean recommended,
-            Places places, List<Image> image) {
+            List<Image> image, Long capacity) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.date = date;
         this.hour = hour;
         this.recommended = recommended;
-        this.places = places;
         this.image = image;
+        this.capacity = capacity;
     }
 
+    
 
     public Long getId() {
         return id;
@@ -114,14 +117,6 @@ public class Event {
     }
 
 
-    public Places getPlaces() {
-        return places;
-    }
-
-
-    public void setPlaces(Places places) {
-        this.places = places;
-    }
 
 
     public List<Image> getImage() {
@@ -131,6 +126,14 @@ public class Event {
 
     public void setImage(List<Image> image) {
         this.image = image;
+    }
+
+    public Long getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Long capacity) {
+        this.capacity = capacity;
     }
 
   

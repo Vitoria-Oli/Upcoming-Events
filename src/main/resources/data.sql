@@ -1,10 +1,8 @@
-INSERT INTO places (id_places, capacity, freeplaces) VALUES (default, 2500, 1200)
-INSERT INTO places (id_places, capacity, freeplaces) VALUES (default, 2000, 1000)
-INSERT INTO places (id_places, capacity, freeplaces) VALUES (default, 1000, 200)
 
-INSERT INTO events (id_event, date, description, hour, name, recommended, places_id_places) VALUES (default, '2023-07-09', 'Bla bla bla.', '21:00:00', 'The Boss en Gijón', true, 1)
-INSERT INTO events (id_event, date, description, hour, name, recommended, places_id_places) VALUES (default, '2023-08-09', 'Blo blo blo.', '20:00:00', 'Tina Turner en Gijón', false, 2)
-INSERT INTO events (id_event, date, description, hour, name, recommended, places_id_places) VALUES (default, '2023-09-09', 'Blu blu blu.', '21:30:00', 'U2 en Gijón', false, 3)
+
+INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-07-09', 'Bla bla bla.', '21:00:00', 'The Boss en Gijón', true, 646)
+INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-08-09', 'Blo blo blo.', '20:00:00', 'Tina Turner en Gijón', false, 987)
+INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-09-09', 'Blu blu blu.', '21:30:00', 'U2 en Gijón', false, 432)
 
 INSERT INTO images (id_image, name, id_event) VALUES(default, 'Una', 1)
 INSERT INTO images (id_image, name, id_event) VALUES(default, 'Una más', 1)
