@@ -1,15 +1,11 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router';
-import Header from './components/Header.vue';
-import CardsEvents from './components/CardsEvents.vue';
-import Footer from './components/Footer.vue';
+import { RouterLink, RouterView } from 'vue-router'
+import HomeView from './views/HomeView.vue';
+
 </script>
 
-
 <template>
-<Header></Header>
-<CardsEvents></CardsEvents>
-<Footer></Footer>
+<HomeView/>
 </template>
 
 <style scoped>
