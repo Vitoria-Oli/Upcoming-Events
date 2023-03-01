@@ -5,7 +5,7 @@
 <template>
 
 <v-card id="Card">
-
+<div id="Superior">
   <v-img  id="img"
       > <img src="../assets/img/Violinista.png" alt="">
   </v-img>
@@ -16,6 +16,7 @@
       <p id="Btn">>>> Ver más</p>
 
     </div>
+</div>
 
   <div id="InfoPlaces">
   <p id="Places">Quedan <b>12</b> plazas de <b>150</b></p>
@@ -41,17 +42,27 @@
 #app{
   display: flex;
   flex-direction: column;
+  height: 40vh;
+  width: 35vw;
   
   #Card{
     background-color: $Yellow;
     height: 40vh;
     width: 35vw;
     display: flex;
-    justify-content: baseline;
+    flex-direction: column;
+    justify-content: center;
+
+    #Superior{
+      display: flex ;
+      flex-direction: row;
+    }
 
     #img{
     height: 25vh;
     width: 14vw;
+    justify-content: flex-start;
+    justify-content: start;
     }
     #Info{
     margin: 2%;
@@ -78,6 +89,7 @@
     }
     #InfoPlaces{
       display: flex;
+      justify-content: center;
       
 
       #Places{
