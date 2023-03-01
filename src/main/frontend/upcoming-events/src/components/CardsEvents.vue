@@ -1,4 +1,10 @@
-<script setup></script>
+<script setup>
+const props= defineProps({
+  event:{
+    type:Object,
+  },
+ });
+</script>
 
 <template>
   <v-card id="Card">
@@ -7,18 +13,17 @@
         <img src="../assets/img/Violinista.png" alt="" />
       </v-img>
       <div id="Info">
-        <p id="Date">2032/03/2023 - 21:30</p>
-        <h3>Nuestros recomendados</h3>
+        <p id="Date">{{ event.date }} - {{event.hour}}</p>
+        <h3>{{event.name}}</h3>
         <p id="Text">
-          In commodo lectus non mi dignissim, sed mollis risus sodales. In
-          accumsan turpis quis nulla sollicitudin lacinia...
+         {{ event.description }}
         </p>
         <p id="Btn">>>> Ver más</p>
       </div>
     </div>
 
     <div id="InfoPlaces">
-      <p id="Places">Quedan <b>12</b> plazas de <b>150</b></p>
+      <p id="Places">Quedan <b>12</b> plazas de <b>{{event.capacity}}</b></p>
       <v-btn id="Button">¡Apúntame!</v-btn>
     </div>
   </v-card>
