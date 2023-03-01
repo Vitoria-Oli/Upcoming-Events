@@ -10,7 +10,7 @@ INSERT INTO images (id_image, name, id_event) VALUES(default, 'Una otra', 3)
 
 INSERT INTO users (id_user, name, email, password) VALUES(default, 'Pepin','yuer@.es','65473')
 INSERT INTO users (id_user, name, email, password) VALUES(default, 'Paco','yuuro@.es','65473')
-INSERT INTO users (id_user, name, email, password) VALUES(default, 'Pon','kerar@.es','65473')
+INSERT INTO users (id_user, name, email, password) VALUES(default, 'Pón','keñar@.es','65473')
 
 INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 1)
 INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 2)

@@ -16,7 +16,7 @@ onBeforeMount(async () => {
   <div id="RecomendadosContainer">
     <h2>Nuestros recomendados</h2>
 
-    <CardsRecomendados></CardsRecomendados>
+    <CardsRecomendados v-for="event in store.EventsRecommended" :event="event"></CardsRecomendados>
   </div>
 
   <div id="EventsContainer">
