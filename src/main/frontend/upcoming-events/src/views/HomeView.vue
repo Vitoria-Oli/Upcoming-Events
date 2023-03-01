@@ -2,6 +2,13 @@
 import Header from "../components/Header.vue";
 import CardsRecomendados from "../components/CardsRecomendados.vue";
 import CardsEvents from "../components/CardsEvents.vue";
+import { useEventsStore } from "../stores/Events";
+import { onBeforeMount } from "vue";
+
+const store = useEventsStore();
+onBeforeMount(async () => {
+  await store.fetchEvents();
+});
 </script>
 
 <template>
@@ -9,12 +16,12 @@ import CardsEvents from "../components/CardsEvents.vue";
   <div id="RecomendadosContainer">
     <h2>Nuestros recomendados</h2>
 
-    <CardsRecomendados></CardsRecomendados>
+    <CardsRecomendados v-for="event in store.EventsRecommended" :event="event"></CardsRecomendados>
   </div>
 
   <div id="EventsContainer">
     <h2>Todo lo que puedes ver y hacer:</h2>
-    <CardsEvents></CardsEvents>
+    <CardsEvents v-for="event in store.Events" :event="event"></CardsEvents>
   </div>
 </template>
 
