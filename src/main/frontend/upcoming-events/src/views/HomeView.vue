@@ -23,6 +23,14 @@ onBeforeMount(async () => {
   <div id="EventsContainer">
     <h2>Todo lo que puedes ver y hacer:</h2>
     <CardsEvents v-for="event in store.Events" :event="event"></CardsEvents>
+    <div id="Pagination" class="text-center">
+    <v-pagination
+      v-model="page"
+      :length="5"
+      prev-icon="mdi-menu-left"
+      next-icon="mdi-menu-right"
+    ></v-pagination>
+  </div>
   </div>
   <Footer></Footer>
 </template>
@@ -39,5 +47,9 @@ onBeforeMount(async () => {
     margin-bottom: 1%;
     font-weight: 700;
   }
+}
+
+#Pagination {
+  color: $Blue;
 }
 </style>
