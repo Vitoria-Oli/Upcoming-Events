@@ -1,4 +1,6 @@
 <script setup>
+import {RouterLink} from "vue-router" 
+
 window.onload = function formDate() {
   let today = new Date();
 
@@ -26,9 +28,9 @@ window.onload = function formDate() {
           v-model="value"
           active
           color="primary">
-          <v-btn>Inicio</v-btn>
+          <router-link to="/"><v-btn>Inicio</v-btn></router-link>
 
-          <v-btn>Favorites</v-btn>
+          <router-link to="/UserRegister"><v-btn>Date de alta</v-btn></router-link>
 
           <v-btn>
             <span>Zona de usuario</span>
