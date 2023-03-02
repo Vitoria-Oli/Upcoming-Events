@@ -5,41 +5,35 @@ import Footer from "../components/Footer.vue";
 
 <template>
   <Header></Header>
-  <h2>
-    Date de alta:
-    <span
-      >es necesario estar registrado para poder apuntarte a nuestros
-      eventos.</span
-    >
-  </h2>
+ 
   <form id="form">
     <div class="form-group">
       <input
       
-        type="text"
+        type="date"
         class="form-control"
-        id="name"
-        placeholder="Introduce tu nombre"
+        id="date"
+        placeholder="Introduce una fecha"
         required
       />
     </div>
     <div class="form-group">
       <input
        
-        type="email"
+        type="text"
         class="form-control form-control-lg"
-        id="email"
-        placeholder="Escribe un email"
+        id="hora"
+        placeholder="Añade la hora"
         required
       />
     </div>
     <div class="form-group">
       <input
        
-        type="password"
+        type="text"
         class="form-control form-control-lg"
-        id="password"
-        placeholder="Introduce una contraseña"
+        id="titulo"
+        placeholder="Introduce un titulo"
         required
       />
     </div>
@@ -47,15 +41,37 @@ import Footer from "../components/Footer.vue";
     <div class="form-group">
       <input
        
-        type="password"
+        type="text"
         class="form-control form-control-lg"
-        id="ConfirmPassword"
-        placeholder="Repite la contraseña"
+        id="description"
+        placeholder="Añade una descripción"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+       
+        type="number"
+        class="form-control form-control-lg"
+        id="plazas"
+        placeholder="Determina el número de plazas"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+       
+        type="file"
+        class="form-control form-control-lg"
+        id="file"
+        placeholder="Añade una imagen"
         required
       />
     </div>
     <div id="buttons-box">
-  
+     
       <button
         type="button"
         class="btn btn-warning"
