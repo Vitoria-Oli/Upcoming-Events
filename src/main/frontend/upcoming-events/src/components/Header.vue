@@ -1,4 +1,6 @@
 <script setup>
+import {RouterLink} from "vue-router" 
+
 window.onload = function formDate() {
   let today = new Date();
 
@@ -28,14 +30,14 @@ window.onload = function formDate() {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div id="Nav" class="navbar-nav">
-            <a class="nav-link" aria-current="page" href="#">Inicio</a>
-            <a class="nav-link" href="#">Date de alta</a>
+            <router-link to="/"><a class="nav-link" aria-current="page" href="#">Inicio</a></router-link>
+            <router-link to="/UserRegister"><a class="nav-link" href="#">Date de alta</a></router-link>
             <a class="nav-link" href="#">Zona de usuario</a>
           </div>
         </div>
       </div>
     </nav>
-    </div>
+  </div>
 </header>
 </template>
 
