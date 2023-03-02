@@ -32,7 +32,7 @@ window.onload = function formDate() {
           <div id="Nav" class="navbar-nav">
             <router-link to="/"><a class="nav-link" aria-current="page" href="#">Inicio</a></router-link>
             <router-link to="/UserRegister"><a class="nav-link" href="#">Date de alta</a></router-link>
-            <a class="nav-link" href="#">Zona de usuario</a>
+           <router-link to="/AddEvents"><a class="nav-link" href="#">Zona de usuario</a></router-link>
           </div>
         </div>
       </div>

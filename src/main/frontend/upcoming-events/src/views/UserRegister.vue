@@ -55,9 +55,7 @@ import Footer from "../components/Footer.vue";
       />
     </div>
     <div id="buttons-box">
-      <RouterLink to="/HomeView">
-        <button type="button" class="btn btn-danger" id="cancel">Cancel</button>
-      </RouterLink>
+  
       <button
         type="button"
         class="btn btn-warning"
