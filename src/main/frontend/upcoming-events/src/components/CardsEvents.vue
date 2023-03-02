@@ -27,7 +27,7 @@ const props = defineProps({
         <p class="text">
           {{ event.description }}
         </p>
-        <p class="btn">>>> Ver más</p>
+        <p class="btn">&gt;&gt;&gt; Ver más</p>
       </div>
     </div>
 
@@ -59,22 +59,24 @@ const props = defineProps({
     }
 
     .img {
-      height: 25vh;
-      width: 14vw;
+      width: 12vw;
+      height: 12vw;
       justify-content: flex-start;
       justify-content: start;
       object-fit: cover;
       img {
+        aspect-ratio: 1;
         width: 100%;
         transition: all 0.4s;
       }
       img:hover {
-        transform: scale(1.1);
+        transform: scale(1.2);
       }
     }
 
     .info {
       margin: 2%;
+      width: 75%;
 
       .date {
         font-family: Dosis;
@@ -98,11 +100,16 @@ const props = defineProps({
         display: flex;
         justify-content: flex-end;
       }
+      .btn:hover {
+        text-decoration: underline;
+      }
     }
 
     .infoPlaces {
       display: flex;
       justify-content: center;
+      align-items: baseline;
+      margin-bottom: 20px;
 
       .places {
         font-family: Dosis;
@@ -112,6 +119,12 @@ const props = defineProps({
       .button {
         color: $White;
         background-color: $Blue;
+        font-family: Dosis;
+        font-weight: 800;
+      }
+      .button:hover {
+        color: $Blue;
+        background-color: $White;
         font-family: Dosis;
         font-weight: 800;
       }

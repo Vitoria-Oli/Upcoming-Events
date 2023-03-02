@@ -18,15 +18,15 @@ const props = defineProps({
       {{ event.name }}
     </v-card-title>
 
-    <v-card-text>
+    <v-card-text class="nomargin">
       <div class="eventDescription">
         <p>{{ event.description }}</p>
       </div>
 
-      <div class="VerMas"><a href="#">&lt;>>> ver más</a></div>
+      <div class="verMas"><a href="#">&gt;&gt;&gt; ver más</a></div>
 
       <div class="quotas">
-        <p>Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b></p>
+        <p class="nomargin">Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b></p>
       </div>
     </v-card-text>
 
@@ -34,7 +34,6 @@ const props = defineProps({
       <v-btn class="apuntame">
         ¡Apúntame!
       </v-btn>
-
     </v-card-actions>
   </v-card>
 </template>
@@ -55,7 +54,7 @@ const props = defineProps({
     transition: all 0.4s;
   }
   .photo:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
 
   .date {
@@ -64,6 +63,10 @@ const props = defineProps({
     opacity: 100;
   }
 
+  .nomargin {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
   .eventTitle {
     color: $Blue;
     padding-top: 0 !important;
@@ -76,11 +79,20 @@ const props = defineProps({
   .verMas {
     display: flex;
     justify-content: flex-end;
+    text-align: right;
+
+    a {
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
   }
 
   .quotas {
     display: flex;
     justify-content: center;
+    margin-bottom: 0;
   }
 
   .apuntame {

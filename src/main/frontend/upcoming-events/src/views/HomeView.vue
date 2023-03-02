@@ -40,24 +40,30 @@ onBeforeMount(async () => {
 
   h2 {
     color: $Blue;
-    margin-top: 2%;
+    margin-top: 40px;
     margin-left: 8%;
-    margin-bottom: 1%;
+    margin-bottom: 20px;
     font-weight: 700;
   }
 
   .eventosRecomendados {
-    padding: 40px;
+    padding: 0 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
   }
 
   .eventos {
-    padding: 40px;
+    padding: 0 40px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+  }
+
+  @media (max-width:1200px) {
+    .eventosRecomendados {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
   @media (max-width:1000px) {
     .eventosRecomendados {
