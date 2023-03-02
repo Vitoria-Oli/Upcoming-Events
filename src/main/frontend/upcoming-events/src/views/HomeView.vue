@@ -1,5 +1,6 @@
 <script setup>
 import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
 import CardsRecomendados from "../components/CardsRecomendados.vue";
 import CardsEvents from "../components/CardsEvents.vue";
 import { useEventsStore } from "../stores/Events";
@@ -23,6 +24,7 @@ onBeforeMount(async () => {
     <h2>Todo lo que puedes ver y hacer:</h2>
     <CardsEvents v-for="event in store.Events" :event="event"></CardsEvents>
   </div>
+  <Footer></Footer>
 </template>
 
 <style lang="scss" scoped>
