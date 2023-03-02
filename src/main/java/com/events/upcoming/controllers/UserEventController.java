@@ -44,4 +44,8 @@ public class UserEventController {
     public void delete(@PathVariable Long id){
         service.delete(id);
     }
+
+
+
+    
 }
