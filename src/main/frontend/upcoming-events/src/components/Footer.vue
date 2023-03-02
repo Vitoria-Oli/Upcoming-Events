@@ -70,7 +70,7 @@ width: 100%;
 
     p{
         font-family: Dosis;
-        font-weight: 700;
+        font-weight: 800;
         color: $White;
     }
  }
