@@ -32,9 +32,9 @@ window.onload = function formDate() {
 
           <router-link to="/UserRegister"><v-btn>Date de alta</v-btn></router-link>
 
-          <v-btn>
-            <span>Zona de usuario</span>
-          </v-btn>
+          <router-link to="/AddEvents"><v-btn>
+            Zona de usuario
+          </v-btn></router-link>
         </v-bottom-navigation>
       </v-layout>
     </div>

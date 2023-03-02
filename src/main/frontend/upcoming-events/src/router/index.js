@@ -14,6 +14,11 @@ const router = createRouter({
       name: 'UserRegister',
       component: () => import('../views/UserRegister.vue')
     },
+    {
+      path: '/AddEvents',
+      name: 'AddEvents',
+      component: () => import('../views/AddEvents.vue')
+    }
   ],
 });
 
