@@ -5,15 +5,16 @@ import Footer from "../components/Footer.vue";
 
 <template>
   <Header></Header>
-  <h2>
+  <h1>
     Date de alta:
     <span
-      >es necesario estar registrado para poder apuntarte a nuestros
+      id="Subtitle">es necesario estar registrado para poder apuntarte a nuestros
       eventos.</span
     >
-  </h2>
+  </h1>
   <form id="form">
     <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Nombre</label>
       <input
       
         type="text"
@@ -24,6 +25,7 @@ import Footer from "../components/Footer.vue";
       />
     </div>
     <div class="form-group">
+      <label for="email"><span class="Asterisk">* </span>E-mail</label>
       <input
        
         type="email"
@@ -34,6 +36,7 @@ import Footer from "../components/Footer.vue";
       />
     </div>
     <div class="form-group">
+      <label for="password"><span class="Asterisk">* </span>Contraseña</label>
       <input
        
         type="password"
@@ -45,12 +48,13 @@ import Footer from "../components/Footer.vue";
     </div>
 
     <div class="form-group">
+      <label for="password"><span class="Asterisk">* </span>Repite tu contraseña</label>
       <input
        
         type="password"
         class="form-control form-control-lg"
         id="ConfirmPassword"
-        placeholder="Repite la contraseña"
+        placeholder="Repite tu contraseña"
         required
       />
     </div>
@@ -72,4 +76,27 @@ import Footer from "../components/Footer.vue";
   <Footer></Footer>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import '../assets/scss/Variables.scss';
+
+*{
+font-family: Dosis;
+
+h1{
+  color: $Blue;
+  margin: 1% 0 2% 2%;
+  #Subtitle{
+    color: $Black;
+    font-size: 0.6em;
+  }
+}
+form{
+  width: 90%;
+  margin: auto;
+  
+  .form-group{
+    margin: 1% 0 1% 0;
+  }
+}
+}
+</style>
