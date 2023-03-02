@@ -21,21 +21,21 @@ window.onload = function formDate() {
     <img src="../assets/img/Header.png" alt="">
     <label for="date" id="date"></label>
     <div id="Nav">
-  <v-layout class="overflow-visible" style="height: 56px;">
-    <v-bottom-navigation
-      v-model="value"
-      active
-      color="primary">
-      <v-btn>Inicio</v-btn>
+      <v-layout class="overflow-visible" style="height: 56px;">
+        <v-bottom-navigation
+          v-model="value"
+          active
+          color="primary">
+          <v-btn>Inicio</v-btn>
 
-      <v-btn>Favorites</v-btn>
+          <v-btn>Favorites</v-btn>
 
-      <v-btn>
-        <span>Nearby</span>
-      </v-btn>
-    </v-bottom-navigation>
-  </v-layout>
-</div>
+          <v-btn>
+            <span>Zona de usuario</span>
+          </v-btn>
+        </v-bottom-navigation>
+      </v-layout>
+    </div>
 </header>
 </template>
 
@@ -44,12 +44,19 @@ window.onload = function formDate() {
 
 header{
     background-color: $Blue;
+    display: flex;
+    justify-content: baseline;
 
     label{
         font-family: Dosis;
         font-weight: 800;
         color: $White;
         font-size: 4vw;
+    }
+    #Nav{
+      color: $White;
+      display: flex;
+      justify-content: flex-end;
     }
 }
 
