@@ -21,23 +21,23 @@ window.onload = function formDate() {
 <template>
 <header>
     <img src="../assets/img/Header.png" alt="">
-    <label for="date" id="date"></label>
-    <div id="Nav">
-      <v-layout class="overflow-visible" style="height: 56px;">
-        <v-bottom-navigation
-          v-model="value"
-          active
-          color="primary">
-          <router-link to="/"><v-btn>Inicio</v-btn></router-link>
-
-          <router-link to="/UserRegister"><v-btn>Date de alta</v-btn></router-link>
-
-          <v-btn>
-            <span>Zona de usuario</span>
-          </v-btn>
-        </v-bottom-navigation>
-      </v-layout>
-    </div>
+    <div id="Info">
+        <label for="date" id="date"></label >
+          <nav class="navbar navbar-expand-lg navbar-light bg-$Blue">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div id="Nav" class="navbar-nav">
+            <router-link to="/"><a class="nav-link" aria-current="page" href="#">Inicio</a></router-link>
+            <router-link to="/UserRegister"><a class="nav-link" href="#">Date de alta</a></router-link>
+            <a class="nav-link" href="#">Zona de usuario</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
 </header>
 </template>
 
@@ -47,19 +47,36 @@ window.onload = function formDate() {
 header{
     background-color: $Blue;
     display: flex;
-    justify-content: baseline;
+    align-items: center;
 
+  #Info{
+    display: flex;
+    display: block;
+    justify-content: center;
+
+    
     label{
+      margin-left: 4vw;
         font-family: Dosis;
         font-weight: 800;
         color: $White;
         font-size: 4vw;
     }
-    #Nav{
-      color: $White;
-      display: flex;
-      justify-content: flex-end;
+    nav{
+    padding: 0%;
+    border-radius: 40%;
+        a{        
+          font-size: 2vw;
+          font-family: Dosis; 
+          font-weight: 700;
+          color: $White;
+          &:active{
+            background-color: $White;
+            color: $Blue;
+          }
+        }
     }
+  }
 }
 
 </style>

@@ -22,7 +22,7 @@ window.onload = function formDate() {
     <img id="Logo" src="../assets/img/happiness-blanco-1.png" alt="">
     <div id="Info">
         <img id="Slogan" src="../assets/img/happiness-blanco-2.png" alt="">
-        <label for="date" id="date"></label>
+        <label for="date" id="date"></label >
         <p >Contáctanos: somostu@happinessandco.com</p>
     </div>
     <div id="Nav">
@@ -45,6 +45,8 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 width: 100%;
+position: absolute;
+bottom: 0;
 
  #Logo{
     display: flex;
