@@ -1,5 +1,6 @@
 package com.events.upcoming.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -36,6 +37,7 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.event = new ArrayList<>();
     }
 
     public Long getId() {
@@ -70,7 +72,13 @@ public class User {
         this.password = password;
     }
     
+    public List<Event> getEvents() {
+        return event;
+    }
 
+    public void setEvents(List<Event> event) {
+        this.event = event;
+    }   
     
     
 }

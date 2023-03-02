@@ -1,84 +1,110 @@
 <script setup>
-const props= defineProps({
-  event:{
-    type:Object,
+const props = defineProps({
+  event: {
+    type: Object,
   },
- });
+});
 
 </script>
 
 <template>
-    <v-card 
-    class="mx-auto"
-    max-width="400"
-    id="Card"
-  >
-    <v-img
-      class="align-end"
-      height="200"
-      cover
-    >
-    <img src="../assets/img/ConciertoBrillo.png" alt="Concierto" id="photo" class="CardSize">
-
-      <v-card-subtitle id="date">{{ event.date }} - {{event.hour}}</v-card-subtitle>
+  <v-card class="mx-auto card" max-width="400">
+    <v-img class="align-end" height="200" cover>
+      <img src="../assets/img/ConciertoBrillo.png" alt="Concierto" class="cardSize photo">
+      <v-card-subtitle class="date">{{ event.date }} - {{ event.hour }}</v-card-subtitle>
     </v-img>
 
-    <v-card-title class="pt-4" id="EventTitle">
-      {{event.name}}
+    <v-card-title class="pt-4 eventTitle">
+      {{ event.name }}
     </v-card-title>
 
-    <v-card-text>
-      <div class="EventDescription"><p>{{ event.description }}</p></div>
+    <v-card-text class="nomargin">
+      <div class="eventDescription">
+        <p>{{ event.description }}</p>
+      </div>
 
-      <div class="VerMas"><a href="#">>>> ver más</a></div>
+      <div class="verMas"><a href="#">&gt;&gt;&gt; ver más</a></div>
 
-      <div class="Quotas"><p>Quedan <b>12</b> plazas de <b>{{event.capacity}}</b></p></div>
+      <div class="quotas">
+        <p class="nomargin">Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b></p>
+      </div>
     </v-card-text>
 
     <v-card-actions>
-      <v-btn  id="Apuntame">
+      <v-btn class="apuntame">
         ¡Apúntame!
       </v-btn>
-
     </v-card-actions>
   </v-card>
-
 </template>
 
 <style lang="scss" scoped>
 @import '../assets/scss/Variables.scss';
 
-  #Card{
-    font-family: Dosis;
-    background-color: $Yellow;
-    #photo{
-        height: 200px;
-        width: 400px;
+
+.card:hover {
+  box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.5);
+}
+.card {
+  font-family: Dosis;
+  background-color: $Yellow;
+
+  .photo {
+    width: 100%;
+    transition: all 0.4s;
+  }
+  .photo:hover {
+    transform: scale(1.2);
+  }
+
+  .date {
+    color: $Blue;
+    font-weight: 800;
+    opacity: 100;
+  }
+
+  .nomargin {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .eventTitle {
+    color: $Blue;
+    padding-top: 0 !important;
+  }
+
+  .eventDescription {
+    font-size: 1.1em;
+  }
+
+  .verMas {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+
+    a {
+      text-decoration: none;
     }
-    #date{
-      color: $Blue;
-      font-weight: 800;
-      opacity: 100;
+    a:hover {
+      text-decoration: underline;
     }
-    #EventTitle{
-      color: $Blue;
-      padding-top: 0 !important;
-    }
-    .EventDescription{
-      font-size: 1.1em;
-    }
-    .VerMas{
-      display: flex;
-      justify-content: flex-end;
-    }
-    .Quotas{
-      display: flex;
-      justify-content: center;
-    }
-    #Apuntame{
-      margin: auto;
-      color: $White;
-      background-color: $Blue;
-    }
-    }
+  }
+
+  .quotas {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .apuntame {
+    margin: auto;
+    color: $White;
+    background-color: $Blue;
+  }
+  .apuntame:hover {
+    margin: auto;
+    color: $Blue;
+    background-color: $White;
+  }
+}
+
 </style>

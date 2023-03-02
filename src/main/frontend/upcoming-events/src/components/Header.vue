@@ -49,6 +49,10 @@ header{
     display: flex;
     align-items: center;
 
+    img{
+      width: 40vw;
+    }
+
   #Info{
     display: flex;
     display: block;

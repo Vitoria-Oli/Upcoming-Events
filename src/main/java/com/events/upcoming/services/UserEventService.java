@@ -3,9 +3,6 @@ import org.springframework.stereotype.Service;
 import com.events.upcoming.models.UserEvent;
 import com.events.upcoming.repositories.UserEventRepository;
 
-
-
-
 import java.util.List;
 
 @Service
@@ -28,5 +25,7 @@ public class UserEventService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+
 
 }
