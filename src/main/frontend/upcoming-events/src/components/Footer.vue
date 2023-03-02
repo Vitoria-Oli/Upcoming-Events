@@ -45,7 +45,6 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 width: 100%;
-position: absolute;
 bottom: 0;
 
  #Logo{
