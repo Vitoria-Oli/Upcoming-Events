@@ -27,15 +27,6 @@ const props= defineProps({
       <v-btn id="Button">¡Apúntame!</v-btn>
     </div>
   </v-card>
-
-  <div id="Pagination" class="text-center">
-    <v-pagination
-      v-model="page"
-      :length="5"
-      prev-icon="mdi-menu-left"
-      next-icon="mdi-menu-right"
-    ></v-pagination>
-  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -108,7 +99,4 @@ const props= defineProps({
   }
 }
 
-#Pagination {
-  color: $Blue;
-}
 </style>
