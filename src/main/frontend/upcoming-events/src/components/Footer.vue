@@ -30,7 +30,7 @@ window.onload = function formDate() {
             <li>Home</li>
             <li>Registrate</li>
             <li>Zona de usuario</li>
-            <li>Zona de administración</li>
+            <router-link to="/AddEvents"><li>Zona de administración</li></router-link>
         </ol>
     </div>
 </footer>
@@ -46,8 +46,6 @@ flex-direction: row;
 justify-content: space-around;
 width: 100%;
 margin-top: 50px;
-// position: absolute;
-// bottom: 0;
 
  #Logo{
     display: flex;
