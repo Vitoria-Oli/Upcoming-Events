@@ -16,21 +16,34 @@ onBeforeMount(async () => {
   <Header></Header>
   <div id="RecomendadosContainer">
     <h2>Nuestros recomendados</h2>
-    <div class="eventosRecomendados">
-      <CardsRecomendados v-for="event in store.EventsRecommended" :event="event"></CardsRecomendados>
-    </div>
+    <v-sheet class="mx-auto" max-width="100%">
+      <v-slide-group
+        v-model="model"
+        class="pa-4 arrows"
+        selected-class="bg-success"
+        dark
+        show-arrows
+      >
+        <v-slide-group-item>
+          <CardsRecomendados
+            v-for="event in store.EventsRecommended"
+            :event="event"
+          ></CardsRecomendados>
+        </v-slide-group-item>
+      </v-slide-group>
+    </v-sheet>
   </div>
 
   <div id="EventsContainer">
     <h2>Todo lo que puedes ver y hacer:</h2>
     <div class="eventos">
-      <CardsEvents v-for=" event in store.Events" :event="event"></CardsEvents>
+      <CardsEvents v-for="event in store.Events" :event="event"></CardsEvents>
     </div>
   </div>
   <Footer></Footer>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import "../assets/scss/Variables.scss";
 
 * {
@@ -44,13 +57,23 @@ onBeforeMount(async () => {
     font-weight: 700;
   }
 
-  .eventosRecomendados {
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-  }
+  // .eventosRecomendados {
+  //   padding: 0 40px;
+  //   display: grid;
+  //   grid-template-columns: 1fr 1fr 1fr 1fr;
+  //   gap: 20px;
+  // }
 
+  .v-slide-group__content {
+  justify-content: center;
+}
+  .v-slide-group .v-slide-group__prev i,
+  .v-slide-group .v-slide-group__next i {
+    background: rgba(0, 155, 219, 0.5) !important;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+}
   .eventos {
     padding: 0 40px;
     display: grid;
@@ -58,26 +81,10 @@ onBeforeMount(async () => {
     gap: 20px;
   }
 
-  @media (max-width:1200px) {
-    .eventosRecomendados {
-      grid-template-columns: 1fr 1fr 1fr;
-    }
-  }
-  @media (max-width:1000px) {
-    .eventosRecomendados {
-      grid-template-columns: 1fr 1fr;
-    }
+  @media (max-width: 1000px) {
     .eventos {
       grid-template-columns: 1fr;
     }
   }
-
-
-  @media (max-width:700px) {
-    .eventosRecomendados {
-      grid-template-columns: 1fr;
-    }
-  }
 }
-
 </style>
