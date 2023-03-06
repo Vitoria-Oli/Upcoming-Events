@@ -3,11 +3,9 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 
 function resetForm() {
-  document.getElementById("name").value = "";
   document.getElementById("email").value = "";
   document.getElementById("password").value = "";
   document.getElementById("ConfirmPassword").value = "";
-  // incident.name = "";
   // incident.email = "";
   // incident.password = "";
   // incident.ConfirmPassword ="";
@@ -25,15 +23,8 @@ function resetForm() {
   </h1>
   <form id="form">
     <div class="form-group">
-      <label for="name"><span class="Asterisk">* </span>Nombre</label>
-      <input
-        v-model="inputResetName"
-        type="text"
-        class="form-control"
-        id="name"
-        placeholder="Introduce tu nombre"
-        required
-      />
+      <label for="name" id="conditions"><span class="Asterisk">* </span>Todos los campos son obligatorios</label>
+      
     </div>
     <div class="form-group">
       <label for="email"><span class="Asterisk">* </span>E-mail</label>
@@ -79,7 +70,7 @@ function resetForm() {
 
       <button
         type="button"
-        class="btn btn-warning"
+        class="btn btn-success"
         id="reset"
         @click="resetForm()"
       >
@@ -110,6 +101,13 @@ function resetForm() {
 
     .form-group {
       margin: 1% 0 1% 0;
+      #conditions{
+        font-weight: normal;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 4%;
+        margin-bottom: -6vh;
+      }
       label{
         font-weight: bold;
         font-size: 1.4em;
@@ -130,9 +128,13 @@ function resetForm() {
       gap: 20px;
       #send{
         background-color: $GreenButton;
+        border: solid 3px $GreenButton;
+        
       }
+
       #reset{
         background-color: $YellowButton;
+        border: solid 3px $YellowButton;
       }
     }
   }
