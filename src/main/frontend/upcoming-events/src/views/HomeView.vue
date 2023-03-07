@@ -5,6 +5,7 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import CardsRecomendados from "../components/CardsRecomendados.vue";
 import CardsEvents from "../components/CardsEvents.vue";
+import CloseSession from "../components/CloseSession.vue";
 import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
 
@@ -18,6 +19,7 @@ onBeforeMount(async () => {
   <Header></Header>
   <div id="RecomendadosContainer">
     <h2>Nuestros recomendados</h2>
+    <CloseSession></CloseSession>
     <div class="eventosRecomendados">
       <CardsRecomendados v-for="event in store.EventsRecommended" :event="event"></CardsRecomendados>
     </div>

@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/AddEvents',
       name: 'AddEvents',
       component: () => import('../views/AddEvents.vue')
+    },
+    {
+      path: '/CloseSession',
+      name: 'CloseSession',
+      component: () => import ('../components/CloseSession.vue')
     }
   ],
 });
