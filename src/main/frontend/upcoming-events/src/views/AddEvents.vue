@@ -35,6 +35,7 @@ import Footer from "../components/Footer.vue";
         <!-- </div> -->
        
     
+
     <div class="form-group">
       <label for="name"><span class="Asterisk">* </span>Introduce un titulo</label>
       <input
@@ -67,7 +68,9 @@ import Footer from "../components/Footer.vue";
     <div class="form-group">
       <label for="name"><span class="Asterisk">* </span>Añade una imagen</label>
       <input
+
          type="file"
+
         class="form-control form-control-lg"
         id="file"
       />
@@ -122,6 +125,4 @@ input{
   height: 50px;
 }
 </style>
-
-
 
