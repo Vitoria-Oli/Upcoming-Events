@@ -23,6 +23,9 @@ const router = createRouter({
       path: '/Welcome',
       name: 'Welcome',
       component: () => import('../views/Welcome.vue')
+      path: '/CloseSession',
+      name: 'CloseSession',
+      component: () => import ('../components/CloseSession.vue')
     }
   ],
 });
