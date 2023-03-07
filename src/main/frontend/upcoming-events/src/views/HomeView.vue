@@ -3,6 +3,7 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import CardsRecomendados from "../components/CardsRecomendados.vue";
 import CardsEvents from "../components/CardsEvents.vue";
+import CloseSession from "../components/CloseSession.vue";
 import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
 
@@ -16,22 +17,10 @@ onBeforeMount(async () => {
   <Header></Header>
   <div id="RecomendadosContainer">
     <h2>Nuestros recomendados</h2>
-    <v-sheet class="mx-auto" max-width="100%">
-      <v-slide-group
-        v-model="model"
-        class="pa-4 arrows"
-        selected-class="bg-success"
-        dark
-        show-arrows
-      >
-        <v-slide-group-item>
-          <CardsRecomendados
-            v-for="event in store.EventsRecommended"
-            :event="event"
-          ></CardsRecomendados>
-        </v-slide-group-item>
-      </v-slide-group>
-    </v-sheet>
+    <CloseSession></CloseSession>
+    <div class="eventosRecomendados">
+      <CardsRecomendados v-for="event in store.EventsRecommended" :event="event"></CardsRecomendados>
+    </div>
   </div>
 
   <div id="EventsContainer">
