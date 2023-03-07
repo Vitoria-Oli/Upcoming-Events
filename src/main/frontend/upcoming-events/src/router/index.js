@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/AddEvents',
       name: 'AddEvents',
       component: () => import('../views/AddEvents.vue')
+    },
+    {
+      path: '/Welcome',
+      name: 'Welcome',
+      component: () => import('../views/Welcome.vue')
     }
   ],
 });
