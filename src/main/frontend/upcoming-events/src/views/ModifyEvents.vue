@@ -4,96 +4,152 @@ import Footer from "../components/Footer.vue";
 </script>
 
 <template>
-    <Header></Header>
-    <h1>MODIFICAR EVENTO</h1>
-   
-    <form id="form">
-      <div class="form-group">
-        <input
-        
-          type="date"
-          class="form-control"
-          id="date"
-          placeholder="Introduce una fecha"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <input
-         
-          type="text"
-          class="form-control form-control-lg"
-          id="hora"
-          placeholder="Añade la hora"
-          required
-        />
-      </div>
-      <div class="form-group">
-        <input
-         
-          type="text"
-          class="form-control form-control-lg"
-          id="titulo"
-          placeholder="Introduce un titulo"
-          required
-        />
-      </div>
+  <Header></Header>
+  <h1>Modificar Evento</h1>
   
-      <div class="form-group">
-        <input
-         
-          type="text"
-          class="form-control form-control-lg"
-          id="description"
-          placeholder="Añade una descripción"
-          required
-        />
-      </div>
   
-      <div class="form-group">
+  <form id="form">
+    
+    <div class = "formtwo">
+
+      <div class="dateFields">
+        <label for="name"><span class="Asterisk">* </span>Introduce la fecha</label>
         <input
-         
-          type="number"
-          class="form-control form-control-lg"
-          id="plazas"
-          placeholder="Determina el número de plazas"
-          required
+        type="date"
+        class="form-control"
+        id="date"
         />
       </div>
-  
-      <div class="form-group">
+      <div class="dateFields">
+        <label for="name"><span class="Asterisk">* </span>Añade la hora</label>
         <input
-         
-          type="file"
-          class="form-control form-control-lg"
-          id="file"
-          placeholder="Añade una imagen"
-          color= $Black:
-          required
+        type="text"
+        class="form-control form-control-lg"
+        id="hora"
         />
       </div>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <div class="check">
+        <input
+        type="checkbox"
+        />
+        <label for="name"> Recomendado</label>
+      </div>
+    </div>
        
-        <button
-          type="button"
-          class="btn btn-warning"
-          id="reset"
-          @click="resetForm()"
-        >
-          Borrar
-        </button>
-        <button type="button" class="btn btn-success" id="send" @click="save()">
-          Añadir
-        </button>
-      </div>
-    </form>
-    <Footer></Footer>
-  </template>
-  
-  <style lang="scss" scoped>
-  @import "../assets/scss/Variables.scss";
-  *{
+    
+    <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Introduce un titulo</label>
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        id="titulo"
+        />
+        
+    </div>
+
+    <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Añade una descripción</label>
+      <input
+        type="text"
+        class="form-control form-control-lg"
+        id="description"
+        />
+        
+    </div>
+
+    <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Determina el número de plazas</label>
+      <input
+        type="number"
+        class="form-control form-control-lg"
+        id="plazas"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Añade una imagen</label>
+      <input
+         type="file"
+        class="form-control form-control-lg"
+        id="file"
+      />
+    </div>
+    
+    <div id="buttons-box">
+      <button
+        type="button"
+        class="btn btn-warning"
+        id="reset"
+        @click="resetForm()"
+      >
+        Borrar
+      </button>
+      <button type="button" class="btn btn-success" id="send" @click="save()">
+        Añadir
+      </button>
+    </div>
+  </form>
+  <Footer></Footer>
+</template>
+
+<style lang="scss" scoped>
+@import "../assets/scss/Variables.scss";
+
+style> 
+  #form{
+  width: 90%;
+}
+label{
+        font-weight: bold;
+        font-size: 1.4em;
+        .Asterisk{
+        color: $Red;
+      }
+      }
+
+      h1{
   font-family: Dosis;
   color: $Blue;
+  font-weight: bold;
+  padding: 40px;
+
 }
+ .formtwo{
+  display: flex;
+  
+  .dateFields{
+    display: flex;
+    // flex-direction: column;
+    flex-wrap: wrap;
+    margin-left:30px;
+    
+     
+  }
+  
+  
+}
+#form{
+  display:flex;
+  flex-direction: column;
+}
+input{
+  height: 50px;
+  border: solid 2px $Blue;
+}
+
+#buttons-box{
+  display: flex;
+  align-self: end;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+.check{
+  display: flex;
+  flex-direction: row;
+  align-content: end;
+  margin-left: 130px;
+  margin-top: 50px;
+}
+
 </style>

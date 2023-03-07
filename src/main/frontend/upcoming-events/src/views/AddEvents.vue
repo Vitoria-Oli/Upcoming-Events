@@ -9,7 +9,9 @@ import Footer from "../components/Footer.vue";
   
   
   <form id="form">
-  
+    
+    <div class = "formtwo">
+
       <div class="dateFields">
         <label for="name"><span class="Asterisk">* </span>Introduce la fecha</label>
         <input
@@ -18,21 +20,21 @@ import Footer from "../components/Footer.vue";
         id="date"
         />
       </div>
-        <div class="dateFields">
-          <label for="name"><span class="Asterisk">* </span>Añade la hora</label>
-          <input
-          type="text"
-          class="form-control form-control-lg"
-          id="hora"
-          />
-        </div>
-        <div>
-          <input
-          type="checkbox"
-          />
-          <label for="name"> Recomendado</label>
-         </div>
-        <!-- </div> -->
+      <div class="dateFields">
+        <label for="name"><span class="Asterisk">* </span>Añade la hora</label>
+        <input
+        type="text"
+        class="form-control form-control-lg"
+        id="hora"
+        />
+      </div>
+      <div class="check">
+        <input
+        type="checkbox"
+        />
+        <label for="name"> Recomendado</label>
+      </div>
+    </div>
        
     
     <div class="form-group">
@@ -92,7 +94,9 @@ import Footer from "../components/Footer.vue";
 
 <style lang="scss" scoped>
 @import "../assets/scss/Variables.scss";
-#form{
+
+style> 
+  #form{
   width: 90%;
 }
 label{
@@ -107,20 +111,47 @@ label{
   font-family: Dosis;
   color: $Blue;
   font-weight: bold;
+  padding: 40px;
 
 }
- #form{
-  // display: flex;
-  align-items: center;
+ .formtwo{
+  display: flex;
+  
   .dateFields{
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
+    flex-wrap: wrap;
+    margin-left:30px;
+    
+     
   }
   
+  
+}
+#form{
+  display:flex;
+  flex-direction: column;
 }
 input{
   height: 50px;
+  border: solid 2px $Blue;
 }
+
+#buttons-box{
+  display: flex;
+  align-self: end;
+  margin-top: 20px;
+  margin-right: 40px;
+}
+
+.check{
+  display: flex;
+  flex-direction: row;
+  align-content: end;
+  margin-left: 130px;
+  margin-top: 50px;
+}
+
 </style>
 
 

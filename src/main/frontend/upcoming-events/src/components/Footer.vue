@@ -31,6 +31,7 @@ window.onload = function formDate() {
             <li>Registrate</li>
             <li>Zona de usuario</li>
             <router-link to="/AddEvents"><li>Zona de administración</li></router-link>
+            <router-link to="/ModifyEvents"><li>Zona de administración</li></router-link>
         </ol>
     </div>
 </footer>
