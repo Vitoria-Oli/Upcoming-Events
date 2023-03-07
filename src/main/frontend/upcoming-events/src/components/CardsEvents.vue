@@ -13,6 +13,7 @@ const props = defineProps({
   },
 });
 
+
 </script>
 
 <template>
@@ -27,7 +28,38 @@ const props = defineProps({
         <p class="text">
           {{ event.description }}
         </p>
-        <p class="btn">&gt;&gt;&gt; Ver más</p>
+        <!-- Button trigger modal -->
+<button id="BtnPopUp" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  >>> ver más
+</button>
+
+<!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-body">
+          <v-img class="img">
+          <img src="../assets/img/Violinista.png" alt="" />
+        </v-img>
+        <div class="info">
+          <p class="date">{{ event.date }} - {{ event.hour }}</p>
+          <h3>{{ event.name }}</h3>
+          <p class="text">
+            {{ event.description }}
+          </p>
+        </div>
+        <div class="infoPlaces">
+          <p class="places">Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b></p>
+          <v-btn class="button">¡Apúntame!</v-btn>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
       </div>
     </div>
 
@@ -103,7 +135,18 @@ const props = defineProps({
       .btn:hover {
         text-decoration: underline;
       }
+      #BtnPopUp{
+        background-color: none;
+        color: $Blue;
+
+      }
+      .modal-content{
+        background-color: $Yellow;
+        
+      }
+
     }
+
 
     .infoPlaces {
       display: flex;
