@@ -46,12 +46,12 @@ onBeforeMount(async () => {
     font-weight: 700;
   }
 
-  // .eventosRecomendados {
-  //   padding: 0 40px;
-  //   display: grid;
-  //   grid-template-columns: 1fr 1fr 1fr 1fr;
-  //   gap: 20px;
-  // }
+  .eventosRecomendados {
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+  }
 
   .v-slide-group__content {
   justify-content: center;
