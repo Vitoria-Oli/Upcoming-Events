@@ -5,64 +5,77 @@ import Footer from "../components/Footer.vue";
 
 <template>
   <Header></Header>
+  <h1>Nuevo Evento</h1>
+  
+  
   <form id="form">
-    <div class="form-group">
-      <input
+  
+      <div class="dateFields">
+        <label for="name"><span class="Asterisk">* </span>Introduce la fecha</label>
+        <input
         type="date"
         class="form-control"
         id="date"
-        placeholder="Introduce una fecha"
-        required
-      />
-    </div>
+        />
+      </div>
+        <div class="dateFields">
+          <label for="name"><span class="Asterisk">* </span>Añade la hora</label>
+          <input
+          type="text"
+          class="form-control form-control-lg"
+          id="hora"
+          />
+        </div>
+        <div>
+          <input
+          type="checkbox"
+          />
+          <label for="name"> Recomendado</label>
+         </div>
+        <!-- </div> -->
+       
+    
+
     <div class="form-group">
-      <input
-        type="text"
-        class="form-control form-control-lg"
-        id="hora"
-        placeholder="Añade la hora"
-        required
-      />
-    </div>
-    <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Introduce un titulo</label>
       <input
         type="text"
         class="form-control form-control-lg"
         id="titulo"
-        placeholder="Introduce un titulo"
-        required
-      />
+        />
+        
     </div>
 
     <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Añade una descripción</label>
       <input
         type="text"
         class="form-control form-control-lg"
         id="description"
-        placeholder="Añade una descripción"
-        required
-      />
+        />
+        
     </div>
 
     <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Determina el número de plazas</label>
       <input
         type="number"
         class="form-control form-control-lg"
         id="plazas"
-        placeholder="Determina el número de plazas"
-        required
       />
     </div>
 
     <div class="form-group">
+      <label for="name"><span class="Asterisk">* </span>Añade una imagen</label>
       <input
-        type="file"
+
+         type="file"
+
         class="form-control form-control-lg"
         id="file"
-        placeholder="Añade una imagen"
-        required
       />
     </div>
+    
     <div id="buttons-box">
       <button
         type="button"
@@ -70,10 +83,10 @@ import Footer from "../components/Footer.vue";
         id="reset"
         @click="resetForm()"
       >
-        Reset
+        Borrar
       </button>
       <button type="button" class="btn btn-success" id="send" @click="save()">
-        Send
+        Añadir
       </button>
     </div>
   </form>
@@ -82,4 +95,34 @@ import Footer from "../components/Footer.vue";
 
 <style lang="scss" scoped>
 @import "../assets/scss/Variables.scss";
+#form{
+  width: 90%;
+}
+label{
+        font-weight: bold;
+        font-size: 1.4em;
+        .Asterisk{
+        color: $Red;
+      }
+      }
+
+      h1{
+  font-family: Dosis;
+  color: $Blue;
+  font-weight: bold;
+
+}
+ #form{
+  // display: flex;
+  align-items: center;
+  .dateFields{
+    display: flex;
+    flex-direction: column;
+  }
+  
+}
+input{
+  height: 50px;
+}
 </style>
+
