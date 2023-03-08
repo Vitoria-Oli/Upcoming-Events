@@ -3,16 +3,16 @@
 </script>
 
 <template>
-<button type="button" class="btn btn-success" id="close">Cerrar<br> sesión</button>
+<button type="button" class="btn btn-success" id="delete">Borrar<br> todo</button>
 </template>
 
 <style lang="scss" scoped>
 @import '../assets/scss/Variables.scss';
 
-#close{
+#delete{
     font-family: Dosis;
-    background-color: $PurpleButton;
-    border: solid 3px $PurpleButton;
+    background-color: $Red;
+    border: solid 3px $Red;
     width: 6vw;
 }
     
