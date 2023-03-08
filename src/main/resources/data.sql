@@ -1,4 +1,4 @@
-INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-07-09', 'Bla bla bla.', '18:00:00', 'The Boss en Gijón', true, 646)
+INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-07-09', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean quam nunc, porttitor vehicula turpis et, iaculis laoreet risus. In et diam ex. Aliquam rhoncus massa bibendum mollis tristique. Vestibulum ante ipsum.', '18:00:00', 'The Boss en Gijón', true, 646)
 INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-08-09', 'Ble ble ble.', '18:30:00', 'Tina Turner en Gijón', true, 987)
 INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-09-09', 'Bli bli bli.', '19:00:00', 'U2 en Gijón', true, 432)
 INSERT INTO events (id_event, date, description, hour, name, recommended, capacity) VALUES (default, '2023-10-09', 'Blo blo blo.', '19:30:00', 'Cooldplay en Gijón', true, 432)
