@@ -72,8 +72,8 @@ const props = defineProps({
 
     .photo {
       transition: all 0.4s;
-      width: 160px;
-      height: 160px;
+      width: 164px;
+      height: 164px;
       object-fit: cover;
 
       &:hover {
