@@ -16,24 +16,34 @@ const props = defineProps({
 </script>
 
 <template>
-  <v-card class="card">
-    <div class="superior">
-      <v-img class="img">
-        <img src="../assets/img/Violinista.png" alt="" />
+  <v-card class="mx-auto card">
+    <div class="headerCard">
+      <v-img class="align-end photo" width="164" height="164" src="src/assets/img/ConciertoBrillo.png" cover>
       </v-img>
-      <div class="info">
-        <p class="date">{{ event.date }} - {{ event.hour }}</p>
-        <h3>{{ event.name }}</h3>
-        <p class="text">
-          {{ event.description }}
-        </p>
-        <p class="btn">&gt;&gt;&gt; Ver más</p>
+      <div class="headerTextcard">
+        <v-card-subtitle class="date">{{ event.date }} - {{ event.hour }}</v-card-subtitle>
+        <v-card-title class="pt-4 eventTitle">
+          {{ event.name }}
+        </v-card-title>
+        <v-card-text class="nomargin">
+          <div class="eventDescription">
+            <p>{{ event.description }}</p>
+          </div>
+        </v-card-text>
       </div>
     </div>
-
-    <div class="infoPlaces">
-      <p class="places">Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b></p>
-      <v-btn class="button">¡Apúntame!</v-btn>
+    <div class="verMas"><a href="#">&gt;&gt;&gt; ver más</a></div>
+    <div class="footerCard">
+      <v-card-text class="nomargin">
+        <div class="quotas">
+          <p class="nomargin">
+            Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
+          </p>
+        </div>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn class="apuntame">¡Apúntame!</v-btn>
+      </v-card-actions>
     </div>
   </v-card>
 </template>
@@ -41,94 +51,101 @@ const props = defineProps({
 <style lang="scss" scoped>
 @import "../assets/scss/Variables.scss";
 
-
-  
-.card:hover {
-  box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.5);
-}
 .card {
-    background-color: $Yellow;
+  font-family: Dosis;
+  background-color: $Yellow;
+  margin: 20px !important;
+  min-width: 420px;
+
+  &:hover {
+    box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.5);
+  }
+
+  .nomargin {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+
+  .headerCard {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-  
 
-    .superior {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .img {
-      width: 12vw;
-      height: 12vw;
-      justify-content: flex-start;
-      justify-content: start;
+    .photo {
+      transition: all 0.4s;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
-      img {
-        aspect-ratio: 1;
-        width: 100%;
-        transition: all 0.4s;
-      }
-      img:hover {
-        transform: scale(1.2);
+
+      &:hover {
+        transform: scale(1.1);
       }
     }
 
-    .info {
-      margin: 2%;
-      width: 75%;
+    .headerTextcard {
+      width: calc(100% - 160px);
 
       .date {
-        font-family: Dosis;
-        font-weight: 800;
         color: $Blue;
+        font-weight: bold;
+        margin-top: 10px;
       }
 
-      h3 {
-        font-family: Dosis;
-        font-weight: 500;
+
+      .eventTitle {
         color: $Blue;
+        padding-top: 0 !important;
+        font-size: 24px;
+        margin-bottom: 0;
+        padding-bottom: 0;
       }
 
-      .text {
-        font-family: Dosis;
+      .eventDescription p {
+        font-size: 16px;
+        margin-bottom: 3px;
       }
 
-      .btn {
-        color: $Blue;
-        border: none;
-        display: flex;
-        justify-content: flex-end;
-      }
-      .btn:hover {
-        text-decoration: underline;
-      }
-    }
-
-    .infoPlaces {
-      display: flex;
-      justify-content: center;
-      align-items: baseline;
-      margin-bottom: 20px;
-
-      .places {
-        font-family: Dosis;
-        margin-right: 2%;
-      }
-
-      .button {
-        color: $White;
-        background-color: $Blue;
-        font-family: Dosis;
-        font-weight: 800;
-      }
-      .button:hover {
-        color: $Blue;
-        background-color: $White;
-        font-family: Dosis;
-        font-weight: 800;
-      }
     }
   }
 
+  .verMas {
+      display: flex;
+      justify-content: flex-end;
+      text-align: right;
+      margin-bottom: 10px;
+      width: 100%;
+      text-align: right;
+      padding: 0 15px;;
+
+      a {
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  .footerCard {
+    display: flex;
+    margin-bottom: 10px;
+
+    .quotas {
+      font-size: 20px;
+      text-align: right;
+    }
+    
+    .apuntame {
+      color: $White;
+      background-color: $Blue;
+      font-size: 16px;
+      font-weight: bold;
+      font-variant: initial !important;
+      margin-right: 7px;
+
+      &:hover {
+        color: $Blue;
+        background-color: $White;
+      }
+    }
+  }
+}
 </style>
