@@ -22,10 +22,10 @@ import Footer from "../components/Footer.vue";
         <p><span>*</span>Todos los campos son obligatorios</p>
       </div>
       <input
-        v-model="inputResetName"
+        v-model="inputResetEmail"
         type="text"
         class="form-control"
-        id="name"
+        id="email"
         required
       />
       <div class="contra">
@@ -34,7 +34,7 @@ import Footer from "../components/Footer.vue";
       <input
         v-model="inputResetPassword"
         type="password"
-        class="form-control form-control-lg"
+        class="form-control form-control"
         id="password"
         required
       />
@@ -42,7 +42,7 @@ import Footer from "../components/Footer.vue";
         <button type="button" class="btn btn-warning">Borrar</button>
         <button type="button" class="green btn btn-success">¡Adentro!</button>
       </div>
-      </div>
+    </div>
   </div>
   <Footer></Footer>
 </template>
@@ -63,7 +63,6 @@ import Footer from "../components/Footer.vue";
     margin-top: 70px;
     margin-left: 10px;
     font-family: Dosis;
-    
   }
 }
 .tex {
@@ -79,31 +78,31 @@ import Footer from "../components/Footer.vue";
   p {
     margin-left: 70%;
     font-family: Dosis;
-    
   }
 }
 
 .contra {
   margin-top: 2%;
 
+ 
   h3 {
     font-size: 20px;
     margin-left: 5%;
     font-family: Dosis;
     font-weight: bold;
-
   }
 }
-
 
 .pack {
   width: 80%;
   margin: auto;
+  input {
+    border:1px solid $Blue;
+  }
 }
 
 .d-grid {
   margin-top: 5%;
-  
 }
 button {
   color: #333333;
