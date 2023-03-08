@@ -40,9 +40,8 @@ const date = computed({
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/UserRegister">Registrate</router-link></li>
         <li><router-link to="/Welcome">Zona de usuario</router-link></li>
-        <li>
-          <router-link to="/AddEvents">Zona de administración</router-link>
-        </li>
+        <li><router-link to="/AddEvents">Zona de administración</router-link></li>
+        <li><router-link to="/ModifyEvents">Zona de modificación</router-link></li>
       </ul>
     </div>
   </footer>
