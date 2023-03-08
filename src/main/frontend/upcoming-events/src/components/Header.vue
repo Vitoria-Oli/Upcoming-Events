@@ -93,7 +93,7 @@ header {
     #date {
       font-family: Dosis;
       color: $White;
-      font-size: 7.1vw;
+      font-size: 7.3vw;
       position: absolute;
       right: 2vw;
       top: 5.5vw;

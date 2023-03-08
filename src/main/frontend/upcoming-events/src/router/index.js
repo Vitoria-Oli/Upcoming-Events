@@ -10,15 +10,16 @@ const router = createRouter({
       component: HomeView,
     },
     {
-      path: '/UserRegister',
-      name: 'UserRegister',
-      component: () => import('../views/UserRegister.vue')
+      path: "/UserRegister",
+      name: "UserRegister",
+      component: () => import("../views/UserRegister.vue"),
     },
     {
-      path: '/AddEvents',
-      name: 'AddEvents',
-      component: () => import('../views/AddEvents.vue')
+      path: "/AddEvents",
+      name: "AddEvents",
+      component: () => import("../views/AddEvents.vue"),
     },
+   
     {
       path: '/Welcome',
       name: 'Welcome',
