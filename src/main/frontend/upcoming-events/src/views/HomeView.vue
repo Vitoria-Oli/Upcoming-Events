@@ -17,8 +17,9 @@ onBeforeMount(async () => {
 <template>
   <Header></Header>
   <div id="RecomendadosContainer">
-    <h2>Nuestros recomendados</h2>
-    <CloseSession></CloseSession>
+    <div id="TitleAndButton">
+    <h2>Nuestros recomendados:</h2>
+    <div id="ContainerButton"><CloseSession></CloseSession></div></div>
     <v-sheet class="mx-auto" max-width="100%">
       <v-slide-group class="pa-4 arrows" selected-class="bg-success" show-arrows>
         <v-slide-group-item>
@@ -43,6 +44,16 @@ onBeforeMount(async () => {
 
 * {
   font-family: Dosis;
+  #TitleAndButton{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2vw;
+  #ContainerButton{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 24vh;
+    margin-bottom: 3vh
+  }}
 
   h2 {
     color: $Blue;
