@@ -13,6 +13,13 @@ const props = defineProps({
   },
 });
 
+// let myModal = document.getElementById('myModal')
+// let myInput = document.getElementById('myInput')
+
+// myModal.addEventListener('shown.bs.modal', function () {
+//   myInput.focus()
+// })
+
 </script>
 
 <template>
@@ -33,7 +40,7 @@ const props = defineProps({
       </div>
     </div>
           <!-- Button trigger modal -->
-      <button id="BtnPopUp" type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+      <button type="button" class="btn BtnPopUp" data-bs-toggle="modal" data-bs-target="#exampleModal">
         >>> ver más
       </button>
 
@@ -138,7 +145,7 @@ const props = defineProps({
     }
   }
 
-  #BtnPopUp{
+  .BtnPopUp{
       display: flex;
       justify-content: flex-end;
       text-align: right;
@@ -148,9 +155,6 @@ const props = defineProps({
       padding: 0 15px;;
       color: $Blue;
       border: none;
-
-
-
 
     }
   .footerCard {
