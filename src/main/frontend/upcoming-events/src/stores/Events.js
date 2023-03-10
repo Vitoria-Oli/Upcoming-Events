@@ -5,13 +5,9 @@ export const useEventsStore = defineStore({
   id: "Events", 
   state: () => ({
     Events: [],
-  }),
-  
-  id: "EventsRecommended", 
-  state: () => ({
     EventsRecommended: [],
   }),
-  actions: {
+    actions: {
     async fetchEvents() {
       const response = await fetch("http://localhost:8080/api/events");
       const responseJson = await response.json();
