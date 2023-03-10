@@ -48,25 +48,34 @@ const props = defineProps({
       <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             <div class="modal-body">
-                <v-img class="img">
-                <img src="../assets/img/Violinista.png" alt="" />
+              <v-img >
+                <img class="modal-img" src="../assets/img/Violinista.png" alt="" />
               </v-img>
-              <div class="info">
-                <p class="date">{{ event.date }} - {{ event.hour }}</p>
-                <h3>{{ event.name }}</h3>
-                <p class="text">
-                  {{ event.description }}
-                </p>
+              <div class="modal-info">
+               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> 
+               <v-card-subtitle class="date">{{ event.date }} - {{ event.hour }}</v-card-subtitle>
+                <v-card-title class="pt-4 eventTitle">
+                  {{ event.name }}
+                </v-card-title>
+                <v-card-text class="nomargin">
+                  <div class="eventDescription">
+                    <p>{{ event.description }}</p>
+                  </div>
+                </v-card-text>
+                <div class="footerCard">
+                <v-card-text class="nomargin">
+                  <div class="quotas">
+                    <p class="nomargin">
+                      Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
+                    </p>
+                  </div>
+                </v-card-text>
+                <v-card-actions>
+                  <v-btn class="apuntame">¡Apúntame!</v-btn>
+                </v-card-actions>
               </div>
-              <div class="infoPlaces">
-                <p class="places">Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b></p>
-                <v-btn class="button">¡Apúntame!</v-btn>
               </div>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
           </div>
         </div>
@@ -157,6 +166,70 @@ const props = defineProps({
       border: none;
 
     }
+
+.modal-dialog{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+    .modal-content{
+      background-color: $White;
+      width: 60vw;
+      
+        .modal-body{
+           width: 60vw;
+           display: flex;
+           justify-content: space-between; 
+           align-items: center;
+
+          .btn-close{
+          background-color: $Blue;
+          display: flex;
+          opacity: 100%;
+          margin: 3% 0 0 92%;
+          }
+            .v-img{
+              width: 20vw;
+              height: 44vh;
+              margin-right: -4vw;
+                .modal-img{
+                  height: 100%;
+                  width: 70%;
+                  border-radius: 5%;
+                }
+
+            }
+            .modal-info{
+              background-color: $Yellow;
+              height: 44vh;
+              width: 100vw;
+              border-radius: 5%;
+
+              .date {
+              color: $Blue;
+              font-size: 1.4rem;
+              }
+              .eventTitle{
+              color: $Blue;
+              font-weight: bold;
+              font-size: 2vw;
+            }
+            .eventDescription p {
+            font-size: 1.3rem;
+            margin-bottom: 3px;
+          }
+           .footerCard{
+            margin-right: 3rem;
+
+            .quotas{
+              font-size: 1.6rem;
+            }
+           }
+        }
+      }
+    }
+  }
+
   .footerCard {
     display: flex;
     margin-bottom: 10px;
