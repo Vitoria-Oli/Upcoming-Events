@@ -36,6 +36,11 @@ const router = createRouter({
       component: () => import("../views/ModifyEvents.vue"),
     },
     {
+      path: "/AdminEvents",
+      name: "AdminEvents",
+      component: () => import("../views/AdminEvents.vue"),
+    },
+    {
       path: "/DeleteAllButton",
       name: "DeleteAllButton",
       component: () => import("../components/DeleteAllButton.vue"),
