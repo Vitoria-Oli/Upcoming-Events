@@ -112,7 +112,7 @@ const numPages = computed(() => {
   .eventos {
     padding: 0 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
