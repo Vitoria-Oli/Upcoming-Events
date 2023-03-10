@@ -13,6 +13,13 @@ const props = defineProps({
   },
 });
 
+// let myModal = document.getElementById('myModal')
+// let myInput = document.getElementById('myInput')
+
+// myModal.addEventListener('shown.bs.modal', function () {
+//   myInput.focus()
+// })
+
 </script>
 
 <template>
@@ -32,7 +39,38 @@ const props = defineProps({
         </v-card-text>
       </div>
     </div>
-    <div class="verMas"><a href="#">&gt;&gt;&gt; ver más</a></div>
+          <!-- Button trigger modal -->
+      <button type="button" class="btn BtnPopUp" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        >>> ver más
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-body">
+                <v-img class="img">
+                <img src="../assets/img/Violinista.png" alt="" />
+              </v-img>
+              <div class="info">
+                <p class="date">{{ event.date }} - {{ event.hour }}</p>
+                <h3>{{ event.name }}</h3>
+                <p class="text">
+                  {{ event.description }}
+                </p>
+              </div>
+              <div class="infoPlaces">
+                <p class="places">Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b></p>
+                <v-btn class="button">¡Apúntame!</v-btn>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
     <div class="footerCard">
       <v-card-text class="nomargin">
         <div class="quotas">
@@ -107,7 +145,7 @@ const props = defineProps({
     }
   }
 
-  .verMas {
+  .BtnPopUp{
       display: flex;
       justify-content: flex-end;
       text-align: right;
@@ -115,14 +153,9 @@ const props = defineProps({
       width: 100%;
       text-align: right;
       padding: 0 15px;;
+      color: $Blue;
+      border: none;
 
-      a {
-        text-decoration: none;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
     }
   .footerCard {
     display: flex;

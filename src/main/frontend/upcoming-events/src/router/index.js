@@ -26,9 +26,9 @@ const router = createRouter({
       component: () => import("../views/Welcome.vue"),
     },
     {
-      path: "/CloseSession",
-      name: "CloseSession",
-      component: () => import("../components/CloseSession.vue"),
+      path: "/CloseSessionButton",
+      name: "CloseSessionButton",
+      component: () => import("../components/CloseSessionButton.vue"),
     },
     {
       path: "/ModifyEvents",
@@ -40,6 +40,16 @@ const router = createRouter({
       name: "AdminEvents",
       component: () => import("../views/AdminEvents.vue"),
     },
+    {
+      path: "/DeleteAllButton",
+      name: "DeleteAllButton",
+      component: () => import("../components/DeleteAllButton.vue"),
+    },
+    {
+      path: "/AddEventButton",
+      name: "AddEventButton",
+      component: () => import("../components/AddEventButton.vue"),
+    }
   ],
 });
 

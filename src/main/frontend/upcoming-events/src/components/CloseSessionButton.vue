@@ -3,7 +3,7 @@
 </script>
 
 <template>
-<button type="button" class="btn btn-success" id="close">Cerrar<br> sesión</button>
+<button type="button" class="btn btn-success" id="close">Cerrar<br>sesión</button>
 </template>
 
 <style lang="scss" scoped>
