@@ -35,6 +35,11 @@ const router = createRouter({
       name: "ModifyEvents",
       component: () => import("../views/ModifyEvents.vue"),
     },
+    {
+      path: "/AdminEvents",
+      name: "AdminEvents",
+      component: () => import("../views/AdminEvents.vue"),
+    },
   ],
 });
 

@@ -42,6 +42,7 @@ const date = computed({
         <li><router-link to="/Welcome">Zona de usuario</router-link></li>
         <li><router-link to="/AddEvents">Zona de administración</router-link></li>
         <li><router-link to="/ModifyEvents">Zona de modificación</router-link></li>
+        <li><router-link to="/AdminEvents">Zona de fulanito</router-link></li>
       </ul>
     </div>
   </footer>
