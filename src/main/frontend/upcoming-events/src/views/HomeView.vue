@@ -2,16 +2,31 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import CardsRecomendados from "../components/CardsRecomendados.vue";
-import PaginationEvents from "../components/PaginationEvents.vue";
 import CardsEvents from "../components/CardsEvents.vue";
 import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
+import { computed } from "@vue/reactivity";
+import { ref } from "vue";
+
 import CloseSessionButton from "../components/CloseSessionButton.vue";
 
 
 const store = useEventsStore();
 onBeforeMount(async () => {
   await store.fetchEvents();
+});
+
+let pageSize = 2;
+let pageNo = ref(1);
+
+const eventsPaginated = computed(() => {
+  const startIndex = (pageNo.value - 1) * pageSize;
+  const data = [...store.Events]; 
+  return data.splice(startIndex, pageSize);
+});
+
+const numPages = computed(() => {
+  return Math.ceil(store.Events.length / pageSize);
 });
 </script>
 
@@ -33,11 +48,13 @@ onBeforeMount(async () => {
   <div id="EventsContainer">
     <h2>Todo lo que puedes ver y hacer:</h2>
     <div class="eventos">
-      <CardsEvents v-for="event in store.Events" :event="event"></CardsEvents>
+      <CardsEvents v-for="event in eventsPaginated" :event="event"></CardsEvents>
     </div>
   </div>
-  <PaginationEvents></PaginationEvents>
-  <Footer></Footer>
+  <v-pagination
+        v-model="pageNo"
+        :length="numPages"
+      ></v-pagination>  <Footer></Footer>
 </template>
 
 <style lang="scss">
