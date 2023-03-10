@@ -12,7 +12,6 @@ const props = defineProps({
     type: Object,
   },
 });
-
 </script>
 
 <template>
@@ -22,7 +21,7 @@ const props = defineProps({
         class="align-end photo"
         width="164"
         height="164"
-        src="src/assets/img/ConciertoBrillo.png"
+        :src="`http://localhost:8080/images/${event.image[0].name}`"
         cover
       >
       </v-img>
@@ -45,7 +44,7 @@ const props = defineProps({
       type="button"
       class="btn BtnPopUp"
       data-bs-toggle="modal"
-      :data-bs-target="`#patata${event.id}`"
+      :data-bs-target="`#event${event.id}`"
     >
       >>> ver más
     </button>
@@ -63,10 +62,9 @@ const props = defineProps({
     </div>
   </v-card>
 
-  <div class="popup">
     <div
       class="modal fade"
-      :id="`patata${event.id}`"
+      :id="`event${event.id}`"
       tabindex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -74,8 +72,11 @@ const props = defineProps({
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-body">
-            <v-img class="img">
-              <img src="../assets/img/Violinista.png" alt="" />
+            <v-img
+              class="align-end photo"
+              :src="`http://localhost:8080/images/${event.image[0].name}`"
+              cover
+            >
             </v-img>
             <div class="info">
               <p class="date">{{ event.date }} - {{ event.hour }}</p>
@@ -103,7 +104,6 @@ const props = defineProps({
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -115,10 +115,6 @@ const props = defineProps({
   margin: 20px !important;
   min-width: 420px;
 
-  .popup {
-    z-index: 10000 !important;
-    background: #000;
-  }
 
   &:hover {
     box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.5);
@@ -177,6 +173,9 @@ const props = defineProps({
     padding: 0 15px;
     color: $Blue;
     border: none;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   .footerCard {
     display: flex;
