@@ -3,7 +3,6 @@ package com.events.upcoming.models;
 import java.util.ArrayList;
 
 import java.util.Collection;
-import java.util.Set;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -23,11 +22,12 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        Set<Role> roles = user.getRoles();
-        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        //Set<Role> roles = user.getRoles();
+        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
-        for (Role role : roles) {
-            authorities.add(new SimpleGrantedAuthority(role.getRole()));
+        for (Role role : user.getRoles()) {
+            SimpleGrantedAuthority authority = new SimpleGrantedAuthority(role.getRole());
+            authorities.add(authority);
         }
         return authorities;
 
