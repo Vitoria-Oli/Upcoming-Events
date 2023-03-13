@@ -2,6 +2,17 @@
 import { RouterLink } from "vue-router";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import AuthService from "../assets/apis/authentication/authService";
+
+let userName = "";
+let password = "";
+
+const submitData = async () => {
+  console.log(userName)
+
+		const authService = new AuthService();
+		const response = await authService.login(userName, password);
+};
 </script>
 
 <template>
@@ -16,33 +27,42 @@ import Footer from "../components/Footer.vue";
         <router-link to="/UserRegister">puedes hacerlo aquí.</router-link>
       </p>
     </div>
-    <div class="pack">
-      <div class="tex">
-        <h3><span>*</span>E-mail</h3>
-        <p><span>*</span>Todos los campos son obligatorios</p>
+    <v-form validate-on="submit" @submit.prevent="submitData">
+      <div class="pack">
+        <div class="tex">
+          <h3><span>* </span>E-mail</h3>
+          <p><span>* </span>Todos los campos son obligatorios</p>
+        </div>
+        <input
+          v-model="userName"
+          type="text"
+          class="form-control"
+          id="email"
+          required
+        />
+        <div class="contra">
+          <h3><span>* </span>Contraseña</h3>
+        </div>
+        <input
+          v-model="password"
+          type="password"
+          class="form-control form-control"
+          id="password"
+          required
+        />
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="button" class="btn btn-warning">Borrar</button>
+          <button
+            type="button"
+            class="green btn btn-success"
+            @click="submitData"
+          >
+            ¡Adentro!
+          </button>
+          <v-btn type="submit" block class="mt-2">Submit</v-btn>
+        </div>
       </div>
-      <input
-        v-model="inputResetEmail"
-        type="text"
-        class="form-control"
-        id="email"
-        required
-      />
-      <div class="contra">
-        <h3><span>*</span>Contraseña</h3>
-      </div>
-      <input
-        v-model="inputResetPassword"
-        type="password"
-        class="form-control form-control"
-        id="password"
-        required
-      />
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <button type="button" class="btn btn-warning">Borrar</button>
-        <button type="button" class="green btn btn-success">¡Adentro!</button>
-      </div>
-    </div>
+    </v-form>
   </div>
   <Footer></Footer>
 </template>
@@ -84,7 +104,6 @@ import Footer from "../components/Footer.vue";
 .contra {
   margin-top: 2%;
 
- 
   h3 {
     font-size: 20px;
     margin-left: 5%;
@@ -97,7 +116,7 @@ import Footer from "../components/Footer.vue";
   width: 80%;
   margin: auto;
   input {
-    border:1px solid $Blue;
+    border: 1px solid $Blue;
   }
 }
 
