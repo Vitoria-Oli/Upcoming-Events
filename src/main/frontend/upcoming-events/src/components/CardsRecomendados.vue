@@ -11,7 +11,7 @@ const props = defineProps({
     <v-img
       class="align-end photo"
       height="164"
-      src="src/assets/img/ConciertoBrillo.png"
+      :src="`http://localhost:8080/images/${event.image[0].name}`"
       cover
     >
     </v-img>
@@ -28,7 +28,14 @@ const props = defineProps({
     </v-card-text>
     <v-card-actions>
       <div class="quotas">
-        <div class="verMas"><a href="#">&gt;&gt;&gt; ver más</a></div>
+        <button
+          type="button"
+          class="btn BtnPopUp"
+          data-bs-toggle="modal"
+          :data-bs-target="`#recommended${event.id}`"
+        >
+          >>> ver más
+        </button>
         <p class="nomargin">
           Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
         </p>
@@ -36,10 +43,59 @@ const props = defineProps({
       </div>
     </v-card-actions>
   </v-card>
+
+  <div
+    class="modal fade popup"
+    :id="`recommended${event.id}`"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <v-img
+            class="align-end photo"
+            :src="`http://localhost:8080/images/${event.image[0].name}`"
+            cover
+          >
+          </v-img>
+          <div class="info">
+            <p class="date">{{ event.date }} - {{ event.hour }}</p>
+            <h3>{{ event.name }}</h3>
+            <p class="text">
+              {{ event.description }}
+            </p>
+          </div>
+          <div class="infoPlaces">
+            <p class="places">
+              Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
+            </p>
+            <v-btn class="button">¡Apúntame!</v-btn>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 @import "../assets/scss/Variables.scss";
+
+.popup {
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+}
 
 .card {
   font-family: Dosis;
