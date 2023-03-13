@@ -12,13 +12,18 @@ INSERT INTO images (id_image, name, id_event) VALUES(default, 'coldplay.jpg', 4)
 INSERT INTO images (id_image, name, id_event) VALUES(default, 'pink-floyd.jpg', 5)
 INSERT INTO images (id_image, name, id_event) VALUES(default, 'monica-naranjo.jpg', 6)
 
-INSERT INTO users (id_user, name, email, password) VALUES(default, 'Pepin','yuer@.es','65473')
-INSERT INTO users (id_user, name, email, password) VALUES(default, 'Paco','yuuro@.es','65473')
-INSERT INTO users (id_user, name, email, password) VALUES(default, 'Pón','keñar@.es','65473')
-INSERT INTO users (id_user, name, email, password) VALUES(default, 'Manolo','pamplinas@.es','asdfg')
+INSERT INTO users (id_user, username, password) VALUES(default, 'yuer@.es', '{bcrypt}$2a$10$6wDeb3wqewh/nSWKVyIh5.0D4XjqyktJ5afuca0aBXDo1sUUIPDAO')
+INSERT INTO users (id_user, username, password) VALUES(default, 'yuuro@.es', '65473')
+INSERT INTO users (id_user, username, password) VALUES(default, 'keñar@.es', '65473')
+INSERT INTO users (id_user, username, password) VALUES(default, 'pamplinas@.es' ,'asdfg')
 
 INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 1)
 INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 2)
 INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 3)
 INSERT INTO users_event (user_id_user, event_id_event) VALUES (2, 1)
 INSERT INTO users_event (user_id_user, event_id_event) VALUES (3, 2)
+
+INSERT INTO roles (id_role, role) VALUES (default, "ROLE_ADMIN")
+INSERT INTO roles (id_role, role) VALUES (default, "ROLE_USER")
+
+INSERT INTO roles_users (user_id, role_id) VALUES (1, 1)
