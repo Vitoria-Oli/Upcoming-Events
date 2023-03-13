@@ -5,7 +5,7 @@ import Footer from "../components/Footer.vue";
 
 <template>
   <Header></Header>
-  <h1>Modify Evento</h1>
+  <h1>Modificar Evento</h1>
 
 
   <form id="form">
@@ -50,7 +50,7 @@ import Footer from "../components/Footer.vue";
     </div>
 
     <div id="buttons-box">
-      <button type="button" class="btn btn-warning" id="reset" @click="resetForm()">
+      <button type="button" class="btn btn-success" id="reset" @click="resetForm()">
         Borrar
       </button>
       <button type="button" class="btn btn-success btn-add" id="send" @click="save()">
@@ -156,6 +156,13 @@ input {
   
 .btn-add {
   margin-left: 2em;
+  background-color: $GreenButton;
+  width: 150px;
+}
+
+#reset{
+  background-color: $YellowButton;
+  width: 150px;
 }
 @media (max-width:900px){
   .formtwo {
