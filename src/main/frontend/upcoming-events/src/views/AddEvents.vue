@@ -1,6 +1,19 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+
+function resetForm() {
+  document.getElementById("date").value = "";
+  document.getElementById("hora").value = "";
+  document.getElementById("prueba").value = "";
+  document.getElementById("titulo").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("plazas").value = "";
+  document.getElementById("file").value = "";
+  // incident.email = "";
+  // incident.password = "";
+  // incident.ConfirmPassword ="";
+}
 </script>
 
 <template>
@@ -21,7 +34,7 @@ import Footer from "../components/Footer.vue";
         <input type="text" class="form-control form-control-lg" id="hora" />
       </div>
       <div class="check">
-        <input type="checkbox" class="prueba" />
+        <input type="checkbox" class="prueba" id="prueba" />
         <label for="name"> Recomendado</label>
       </div>
     </div>
@@ -50,7 +63,7 @@ import Footer from "../components/Footer.vue";
     </div>
 
     <div id="buttons-box">
-      <button type="button" class="btn btn-warning" id="reset" @click="resetForm()">
+      <button type="button" class="btn btn-success" id="reset" @click="resetForm()">
         Borrar
       </button>
       <button type="button" class="btn btn-success btn-add" id="send" @click="save()">
@@ -156,6 +169,13 @@ input {
   
 .btn-add {
   margin-left: 2em;
+  background-color: $GreenButton;
+  width: 150px;
+}
+
+#reset{
+  background-color: $YellowButton;
+  width: 150px;
 }
 @media (max-width:900px){
   .formtwo {
