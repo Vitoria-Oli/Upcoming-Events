@@ -12,23 +12,23 @@ const props = defineProps({
     type: Object,
   },
 });
-
-// let myModal = document.getElementById('myModal')
-// let myInput = document.getElementById('myInput')
-
-// myModal.addEventListener('shown.bs.modal', function () {
-//   myInput.focus()
-// })
-
 </script>
 
 <template>
   <v-card class="mx-auto card">
     <div class="headerCard">
-      <v-img class="align-end photo" width="164" height="164" src="src/assets/img/ConciertoBrillo.png" cover>
+      <v-img
+        class="align-end photo"
+        width="164"
+        height="164"
+        :src="`http://localhost:8080/images/${event.image[0].name}`"
+        cover
+      >
       </v-img>
       <div class="headerTextcard">
-        <v-card-subtitle class="date">{{ event.date }} - {{ event.hour }}</v-card-subtitle>
+        <v-card-subtitle class="date"
+          >{{ event.date }} - {{ event.hour }}</v-card-subtitle
+        >
         <v-card-title class="pt-4 eventTitle">
           {{ event.name }}
         </v-card-title>
@@ -39,10 +39,6 @@ const props = defineProps({
         </v-card-text>
       </div>
     </div>
-          <!-- Button trigger modal -->
-      <button type="button" class="btn BtnPopUp" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        >>> ver más
-      </button>
 
       <!-- Modal -->
       <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -80,6 +76,14 @@ const props = defineProps({
           </div>
         </div>
       </div>
+    <button
+      type="button"
+      class="btn BtnPopUp"
+      data-bs-toggle="modal"
+      :data-bs-target="`#event${event.id}`"
+    >
+      >>> ver más
+    </button>
     <div class="footerCard">
       <v-card-text class="nomargin">
         <div class="quotas">
@@ -93,6 +97,49 @@ const props = defineProps({
       </v-card-actions>
     </div>
   </v-card>
+
+    <div
+      class="modal fade"
+      :id="`event${event.id}`"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <v-img
+              class="align-end photo"
+              :src="`http://localhost:8080/images/${event.image[0].name}`"
+              cover
+            >
+            </v-img>
+            <div class="info">
+              <p class="date">{{ event.date }} - {{ event.hour }}</p>
+              <h3>{{ event.name }}</h3>
+              <p class="text">
+                {{ event.description }}
+              </p>
+            </div>
+            <div class="infoPlaces">
+              <p class="places">
+                Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
+              </p>
+              <v-btn class="button">¡Apúntame!</v-btn>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -104,6 +151,7 @@ const props = defineProps({
   margin: 20px !important;
   min-width: 420px;
 
+
   &:hover {
     box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.5);
   }
@@ -112,7 +160,6 @@ const props = defineProps({
     margin-bottom: 0;
     padding-bottom: 0;
   }
-
 
   .headerCard {
     display: flex;
@@ -137,7 +184,6 @@ const props = defineProps({
         margin-top: 10px;
       }
 
-
       .eventTitle {
         color: $Blue;
         padding-top: 0 !important;
@@ -150,21 +196,21 @@ const props = defineProps({
         font-size: 16px;
         margin-bottom: 3px;
       }
-
     }
   }
 
-  .BtnPopUp{
-      display: flex;
-      justify-content: flex-end;
-      text-align: right;
-      margin-bottom: 10px;
-      width: 100%;
-      text-align: right;
-      padding: 0 15px;;
-      color: $Blue;
-      border: none;
-
+  .BtnPopUp {
+    display: flex;
+    justify-content: flex-end;
+    text-align: right;
+    margin-bottom: 10px;
+    width: 100%;
+    text-align: right;
+    padding: 0 15px;
+    color: $Blue;
+    border: none;
+    &:hover {
+      text-decoration: underline;
     }
 
 .modal-dialog{
@@ -238,7 +284,7 @@ const props = defineProps({
       font-size: 20px;
       text-align: right;
     }
-    
+
     .apuntame {
       color: $White;
       background-color: $Blue;
@@ -253,5 +299,5 @@ const props = defineProps({
       }
     }
   }
-}
+}}
 </style>
