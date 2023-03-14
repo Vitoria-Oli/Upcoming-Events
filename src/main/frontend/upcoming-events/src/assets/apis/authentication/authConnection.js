@@ -1,3 +1,5 @@
+import { useAuthStore } from "../../../stores/auth-storage";
+
 export default class AuthConnection {
   #baseUrl = "http://localhost:8080";
   #auth = "";
@@ -17,8 +19,11 @@ export default class AuthConnection {
     });
 
     if (response) {
-      alert(response.status);
-      console.log(response);
+      const cosa = await response.json()
+      const store = useAuthStore();
+      store.isAuthenticate = true;
+      store.roles = cosa.role;
+      store.username = cosa.username;
     } else {
       alert("An error has occurred.\nPlease try again after a few minutes.");
     }
