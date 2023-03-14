@@ -3,14 +3,19 @@ import { RouterLink } from "vue-router";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import AuthService from "../assets/apis/authentication/authService";
+import { useAuthStore } from "../stores/auth-storage";
+import router from "../router";
 
 let userName = "";
 let password = "";
+const store = useAuthStore();
 
 const submitData = async () => {
 		const authService = new AuthService();
 		const response = await authService.login(userName, password);
+    router.push("/")
 };
+
 </script>
 
 <template>

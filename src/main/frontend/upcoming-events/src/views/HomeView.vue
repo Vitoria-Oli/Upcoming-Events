@@ -7,11 +7,13 @@ import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
+import { useAuthStore } from "../stores/auth-storage";
 
 import CloseSessionButton from "../components/CloseSessionButton.vue";
 
 
 const store = useEventsStore();
+const storeUser = useAuthStore();
 onBeforeMount(async () => {
   await store.fetchEvents();
 });
@@ -28,6 +30,7 @@ const eventsPaginated = computed(() => {
 const numPages = computed(() => {
   return Math.ceil(store.Events.length / pageSize);
 });
+
 </script>
 
 <template>
