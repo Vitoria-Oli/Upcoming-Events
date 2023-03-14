@@ -2,7 +2,7 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import PaginationEvents from "../components/PaginationEvents.vue";
-import CardsEvents from "../components/CardsEvents.vue";
+import CardEventsSelected from "../components/CardEventsSelected.vue";
 import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
 import CloseSessionButton from "../components/CloseSessionButton.vue";
@@ -19,10 +19,12 @@ onBeforeMount(async () => {
   <Header></Header>
 
 
-  <div id="EventsContainer">
-    <h2>Todo lo que puedes ver y hacer:</h2>
+  <div id="RecomendadosContainer">
+    <div id="TitleAndButton">
+    <h1>Bienvenido, Fulanito. <br> <span id="Subtitle">Estos son tus evento seleccionados:</span></h1>
+    <div id="ContainerButton"><DeleteAllButton></DeleteAllButton> <CloseSessionButton></CloseSessionButton></div></div>
     <div class="eventos">
-      <CardsEvents v-for="event in store.Events" :event="event"></CardsEvents>
+      <CardEventsSelected v-for="event in store.Events" :event="event"></CardEventsSelected>
     </div>
   </div>
   <PaginationEvents></PaginationEvents>
@@ -37,21 +39,23 @@ onBeforeMount(async () => {
   #TitleAndButton{
     display: flex;
     justify-content: space-between;
-    margin-top: 2vw;
+    margin-top: 2%;
+    h1 {
+    color: $Blue;
+    margin: 1% 0 2% 5%;
+    font-weight: 700;
+    #Subtitle {
+      color: $Blue;
+      font-size: 0.6em;
+    }
+  }
   #ContainerButton{
     display: flex;
-    justify-content: flex-end;
+    gap: 7%;
     margin-right: 24vh;
-    margin-bottom: 3vh
+    justify-content: center;
+    align-items: center;
   }}
-
-  h2 {
-    color: $Blue;
-    margin-top: 40px;
-    margin-left: 8%;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
 
 
   .eventosRecomendados {
