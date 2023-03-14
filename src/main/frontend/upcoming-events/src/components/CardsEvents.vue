@@ -68,18 +68,22 @@ const props = defineProps({
         <div class="modal-content">
           <div class="modal-body">
             <v-img
-              class="align-end photo"
+              class="modal-img"
               :src="`http://localhost:8080/images/${event.image[0].name}`"
-              cover
-            >
+              cover  >
             </v-img>
-            <div class="info">
+            <div class="modal-info">
+              <button
+              type="button"
+              class="btn btn-secondary x-close"
+              data-bs-dismiss="modal">
+               X
+            </button>
               <p class="date">{{ event.date }} - {{ event.hour }}</p>
-              <h3>{{ event.name }}</h3>
+              <h3 class="eventTitle" >{{ event.name }}</h3>
               <p class="text">
                 {{ event.description }}
-              </p>
-            </div>
+              </p>           
             <div class="infoPlaces">
               <p class="places">
                 Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
@@ -87,15 +91,7 @@ const props = defineProps({
               <v-btn class="button">¡Apúntame!</v-btn>
             </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
+        </div>
         </div>
       </div>
     </div>
@@ -159,6 +155,8 @@ const props = defineProps({
       text-decoration: underline;
     }
   }
+
+
   .footerCard {
     display: flex;
     margin-bottom: 10px;
@@ -180,4 +178,83 @@ const props = defineProps({
     }
   }
 }
+.modal-dialog{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+.modal-content{
+  width: 60vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-body{
+    width: 60vw;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+
+    .modal-img{
+      width: 20vw;
+      height: 44vh;
+      border-radius: 5%;
+      margin-right: 2vw;
+    }
+
+    .modal-info{
+      background-color: $Yellow;
+      width: 100vw;
+      border-radius: 3%;
+
+      .x-close{
+        background-color: $Blue;
+        display: flex;
+        margin-left: 85%;
+        margin-top: 2%;
+      }
+      .date {
+        color: $Blue;
+        font-size: 1.4rem;
+        margin-left: 2vw;
+       }
+      .eventTitle{
+      color: $Blue;
+      font-weight: bold;
+      font-size: 2vw;
+      margin-left: 2vw;
+      }
+      .text{
+       font-size: 1.3rem;
+       margin-bottom: 3px;
+       margin-left: 2vw;
+      }
+      .infoPlaces{
+       margin-top: 2vw;
+       margin-right: 3rem;
+       margin-left: 2vw;
+       display: flex;
+       justify-content: space-between;
+       
+      }
+      .places{
+      font-size: 1.4rem;
+      margin-left: 2vw;
+      }
+      .button{
+      color: $White;
+      background-color: $Blue;
+      font-size: 16px;
+      font-weight: bold;
+      font-variant: initial !important;
+      margin-right: 7px;
+      &:hover {
+        color: $Blue;
+        background-color: $White;
+      }
+      }
+    }
+  }
+}
+}
+
 </style>
