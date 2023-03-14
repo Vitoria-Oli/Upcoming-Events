@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import { useAuthStore } from "../stores/auth-storage";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,15 +16,15 @@ const router = createRouter({
       component: () => import("../views/UserRegister.vue"),
     },
     {
-      path: "/AddEvents",
-      name: "AddEvents",
-      component: () => import("../views/AddEvents.vue"),
-    },
-
-    {
       path: "/Welcome",
       name: "Welcome",
       component: () => import("../views/Welcome.vue"),
+    },
+    {
+      path: "/AddEvents",
+      name: "AddEvents",
+      component: () => import("../views/AddEvents.vue"),
+      meta: { requiresAuth: true },
     },
     {
       path: "/CloseSessionButton",
@@ -34,11 +35,13 @@ const router = createRouter({
       path: "/ModifyEvents",
       name: "ModifyEvents",
       component: () => import("../views/ModifyEvents.vue"),
+      meta: { requiresAuth: true },
     },
     {
       path: "/AdminEvents",
       name: "AdminEvents",
       component: () => import("../views/AdminEvents.vue"),
+      meta: { requiresAuth: true },
     },
     {
       path: "/DeleteAllButton",
@@ -57,5 +60,13 @@ const router = createRouter({
     }
   ],
 });
+
+router.beforeEach( async (to, from) => {
+	const auth = useAuthStore();
+	if(to.meta.requiresAuth && !auth.isAuthenticate) {
+		return { name: 'Welcome' }
+	}
+})
+
 
 export default router;

@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { computed } from "@vue/reactivity";
+import { useAuthStore } from "../stores/auth-storage";
 
 const date = computed({
   get() {
@@ -16,6 +17,9 @@ const date = computed({
     return `${day}/${month}/${year}`;
   },
 });
+
+const isAuthenticated = useAuthStore();
+
 </script>
 
 <template>
@@ -46,7 +50,8 @@ const date = computed({
             <div id="nav" class="navbar-nav momarnopad">
               <router-link to="/">Inicio</router-link>
               <router-link to="/UserRegister">Date de alta</router-link>
-              <router-link to="/AddEvents">Zona de usuario</router-link>
+              <router-link to="/AddEvents" v-if="isAuthenticated.roles=='ROLE_ADMIN'">Zona de usuario</router-link>
+              <router-link to="/Welcome" v-else>Login</router-link>
             </div>
           </div>
         </div>
