@@ -8,8 +8,6 @@ let userName = "";
 let password = "";
 
 const submitData = async () => {
-  console.log(userName)
-
 		const authService = new AuthService();
 		const response = await authService.login(userName, password);
 };

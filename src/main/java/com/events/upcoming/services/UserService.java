@@ -2,6 +2,7 @@ package com.events.upcoming.services;
 
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,7 @@ public class UserService {
     }
 
     public User store(User user) {
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
         String encodePassword = encoder.encode(user.getPassword());
         user.setPassword(encodePassword);
         return repository.save(user);

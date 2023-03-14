@@ -71,7 +71,8 @@ const numPages = computed(() => {
     justify-content: flex-end;
     margin-right: 24vh;
     margin-bottom: 3vh
-  }}
+  }
+}
 
   h2 {
     color: $Blue;
