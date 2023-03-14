@@ -49,6 +49,11 @@ const router = createRouter({
       path: "/AddEventButton",
       name: "AddEventButton",
       component: () => import("../components/AddEventButton.vue"),
+    },
+    {
+      path: "/SelectedEvents",
+      name: "SelectedEvents",
+      component: () => import("../views/SelectedEvents.vue"),
     }
   ],
 });

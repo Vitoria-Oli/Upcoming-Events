@@ -7,7 +7,6 @@ import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
-
 import CloseSessionButton from "../components/CloseSessionButton.vue";
 
 
@@ -71,7 +70,8 @@ const numPages = computed(() => {
     justify-content: flex-end;
     margin-right: 24vh;
     margin-bottom: 3vh
-  }}
+  }
+}
 
   h2 {
     color: $Blue;

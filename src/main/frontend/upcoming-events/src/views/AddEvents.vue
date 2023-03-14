@@ -1,6 +1,17 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+
+function resetForm() { 
+  document.getElementById("dateevent").value = "";
+  document.getElementById("hora").value = "";
+  document.getElementById("prueba").value = "";
+  document.getElementById("titulo").value = "";
+  document.getElementById("description").value = "";
+  document.getElementById("plazas").value = "";
+  document.getElementById("file").value = "";
+
+}
 </script>
 
 <template>
@@ -14,14 +25,14 @@ import Footer from "../components/Footer.vue";
 
       <div class="dateFields">
         <label for="name"><span class="Asterisk">* </span>Introduce la fecha</label>
-        <input type="date" class="form-control" id="date" />
+        <input type="date" class="form-control " id="dateevent" />
       </div>
       <div class="dateFields">
         <label for="name"><span class="Asterisk">* </span>Añade la hora</label>
         <input type="text" class="form-control form-control-lg" id="hora" />
       </div>
       <div class="check">
-        <input type="checkbox" class="prueba" />
+        <input type="checkbox" class="prueba" id="prueba" />
         <label for="name"> Recomendado</label>
       </div>
     </div>
@@ -50,7 +61,7 @@ import Footer from "../components/Footer.vue";
     </div>
 
     <div id="buttons-box">
-      <button type="button" class="btn btn-warning" id="reset" @click="resetForm()">
+      <button type="button" class="btn btn-success" id="reset" @click="resetForm()">
         Borrar
       </button>
       <button type="button" class="btn btn-success btn-add" id="send" @click="save()">
@@ -95,7 +106,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
   }
-  
+
 
 
 }
@@ -103,7 +114,8 @@ h1 {
 #form {
   display: flex;
   flex-direction: column;
-  .form-group{
+
+  .form-group {
     margin: 1% 0 1% 0;
   }
 }
@@ -125,49 +137,60 @@ input {
   flex-direction: row;
   margin-left: 130px;
   margin-top: 33px;
-  label{
+
+  label {
     line-height: 50px;
   }
-  .prueba{
+
+  .prueba {
     appearance: none;
     display: inline-flex;
-  align-items: center;
-  cursor: pointer;
-  background-color: $White;
-  color: $White;
-  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
-  width: 50px;
-  height: 50px;
-  border: 2px solid $Blue;
-  background-position: 0 -2rem;
-  background-size: 100%;
-  background-repeat: no-repeat;
-  transition: all 0.3s ease-in-out;
-  border-radius: 5px;
-  margin-right: 10px;
-  &:checked {
-    background-color: $Blue;
-    color: $Blue;
-    background-position: 0 0;
+    align-items: center;
+    cursor: pointer;
+    background-color: $White;
+    color: $White;
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+    width: 50px;
+    height: 50px;
+    border: 2px solid $Blue;
+    background-position: 0 -2rem;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    margin-right: 10px;
+
+    &:checked {
+      background-color: $Blue;
+      color: $Blue;
+      background-position: 0 0;
+    }
   }
+
 }
 
-    }
-  
 .btn-add {
   margin-left: 2em;
+  background-color: $GreenButton;
+  width: 150px;
 }
-@media (max-width:900px){
+
+#reset {
+  background-color: $YellowButton;
+  width: 150px;
+}
+
+@media (max-width:900px) {
   .formtwo {
-  flex-direction: column;
+    flex-direction: column;
   }
+
   .check {
-  margin-top: 15px;
-  margin-left: 0px;
+    margin-top: 15px;
+    margin-left: 0px;
   }
-  
 
-    }
 
+}
 </style>
 

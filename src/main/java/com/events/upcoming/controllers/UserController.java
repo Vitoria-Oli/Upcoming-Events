@@ -29,6 +29,7 @@ public class UserController {
     public ResponseEntity<Map<String, String>> save(@RequestBody User user) {
 
         try {
+            System.out.println(user.getPassword());
             User userDB = service.store(user);
             Map<String, String> json = new HashMap<>();
 
