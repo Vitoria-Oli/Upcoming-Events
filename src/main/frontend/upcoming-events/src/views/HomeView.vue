@@ -7,11 +7,8 @@ import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
-<<<<<<< HEAD
 import { useAuthStore } from "../stores/auth-storage";
 
-=======
->>>>>>> c4f7912081da818099a64be53e04200eddd90c59
 import CloseSessionButton from "../components/CloseSessionButton.vue";
 
 
