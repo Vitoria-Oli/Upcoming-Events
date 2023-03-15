@@ -186,13 +186,9 @@ const props = defineProps({
   }
 }
 
-.modal-backdrop{
-  width: none;
-  height: none;
-  position: relative;
+.modal-backdrop.show{
+  opacity: 100%;
 
 }
-.fade{
-  transition: none;
-}
+
 </style>
