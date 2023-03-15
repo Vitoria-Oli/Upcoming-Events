@@ -5,9 +5,11 @@ import Footer from "../components/Footer.vue";
 
 <template>
   <Header></Header>
+ 
   <form id="form">
     <div class="form-group">
       <input
+      
         type="date"
         class="form-control"
         id="date"
@@ -17,6 +19,7 @@ import Footer from "../components/Footer.vue";
     </div>
     <div class="form-group">
       <input
+       
         type="text"
         class="form-control form-control-lg"
         id="hora"
@@ -26,6 +29,7 @@ import Footer from "../components/Footer.vue";
     </div>
     <div class="form-group">
       <input
+       
         type="text"
         class="form-control form-control-lg"
         id="titulo"
@@ -36,6 +40,7 @@ import Footer from "../components/Footer.vue";
 
     <div class="form-group">
       <input
+       
         type="text"
         class="form-control form-control-lg"
         id="description"
@@ -46,6 +51,7 @@ import Footer from "../components/Footer.vue";
 
     <div class="form-group">
       <input
+       
         type="number"
         class="form-control form-control-lg"
         id="plazas"
@@ -56,6 +62,7 @@ import Footer from "../components/Footer.vue";
 
     <div class="form-group">
       <input
+       
         type="file"
         class="form-control form-control-lg"
         id="file"
@@ -64,6 +71,7 @@ import Footer from "../components/Footer.vue";
       />
     </div>
     <div id="buttons-box">
+     
       <button
         type="button"
         class="btn btn-warning"
@@ -80,6 +88,4 @@ import Footer from "../components/Footer.vue";
   <Footer></Footer>
 </template>
 
-<style lang="scss" scoped>
-@import "../assets/scss/Variables.scss";
-</style>
+<style lang="scss" scoped></style>
