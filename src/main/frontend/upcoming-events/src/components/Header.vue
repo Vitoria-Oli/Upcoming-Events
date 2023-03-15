@@ -3,16 +3,20 @@ import { RouterLink } from "vue-router";
 import { computed } from "@vue/reactivity";
 import { useAuthStore } from "../stores/auth-storage";
 
-const date = computed({
-  get() {
-    let today = new Date();
+window.onload = function formDate() {
+  let today = new Date();
 
-    let day = today.getDate();
-    let month = today.getMonth() + 1;
-    let year = today.getFullYear();
+  let day = today.getDate();
+  let month = today.getMonth() + 1;
+  let year = today.getFullYear();
 
-    day = ("0" + day).slice(-2);
-    month = ("0" + month).slice(-2);
+  day = ('0' + day).slice(-2);
+  month = ('0' + month).slice(-2);
+
+  let printDate = `${day}/${month}/${year}`
+  document.getElementById("date").innerHTML = printDate
+
+};
 
     return `${day}/${month}/${year}`;
   },
@@ -55,42 +59,25 @@ const isAuthenticated = useAuthStore();
             </div>
           </div>
         </div>
-      </nav>
-    </div>
-  </header>
+      </div>
+    </nav>
+  </div>
+</header>
 </template>
 
 <style lang="scss" scoped>
-@import "../assets/scss/Variables.scss";
+@import '../assets/scss/Variables.scss';
 
-header {
-  .momarnopad {
-    margin: 0;
-    padding: 0;
-  }
-  background-color: $Blue;
-  display: flex;
-  align-items: center;
-  height: 20.5vw;
-  position: relative;
+header{
+    background-color: $Blue;
+    display: flex;
+    align-items: center;
 
-  figure {
-    margin: 0;
-    width: 48vw;
-    margin-left: 2vw;
-
-    img {
-      height: 27vw;
+    img{
+      width: 40vw;
     }
-  }
 
-  button#toggler {
-    box-shadow: none;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    color: $White;
-  }
-
-  #info {
+  #Info{
     display: flex;
     display: block;
     justify-content: center;
@@ -109,36 +96,30 @@ header {
       bottom: 0;
       right: 0;
 
-      a {
+    
+    
+    label{
+      margin-left: 4vw;
         font-family: Dosis;
-        font-size: 2vw;
-        display: inline-block;
-        padding: 1vw 2vw;
-        border-radius: 5px 5px 0 0;
+        font-weight: 800;
         color: $White;
-        background-color: $Blue;
-        transition: all 0.4s;
-        text-decoration: none;
-        font-weight: 700;
-        &.router-link-exact-active,
-        &:hover {
-          background-color: $White;
-          color: $Blue;
+        font-size: 4vw;
+    }
+    nav{
+    padding: 0%;
+    border-radius: 40%;
+        a{        
+          font-size: 2vw;
+          font-family: Dosis; 
+          font-weight: 700;
+          color: $White;
+          &:active{
+            background-color: $White;
+            color: $Blue;
+          }
         }
-      }
     }
   }
 }
 
-@media (max-width: 850px) {
-  header {
-    #info {
-      nav {
-        a {
-          font-size: 16px;
-        }
-      }
-    }
-  }
-}
 </style>
