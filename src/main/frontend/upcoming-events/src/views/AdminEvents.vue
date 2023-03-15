@@ -2,11 +2,11 @@
 import { RouterLink } from "vue-router";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import CardsEvents from "../components/CardsEvents.vue";
 import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
 import AddEventButton from "../components/AddEventButton.vue"
 import CloseSessionButton from "../components/CloseSessionButton.vue"
+import CardsEventsAdmin from "../components/CardsEventsAdmin.vue";
 
 const store = useEventsStore();
 onBeforeMount(async () => {
@@ -33,7 +33,7 @@ onBeforeMount(async () => {
     
     <div id="EventsContainer">
         <div class="eventos">
-          <CardsEvents v-for="event in store.Events" :event="event"></CardsEvents>
+          <CardsEventsAdmin v-for="event in store.Events" :event="event"></CardsEventsAdmin>
         </div> 
        </div> 
 
