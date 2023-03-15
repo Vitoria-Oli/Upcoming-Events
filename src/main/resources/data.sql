@@ -17,14 +17,11 @@ INSERT INTO users (id_user, username, password) VALUES(default, 'nada01@.es', '$
 INSERT INTO users (id_user, username, password) VALUES(default, 'nada02@.es', '$2a$10$6wDeb3wqewh/nSWKVyIh5.0D4XjqyktJ5afuca0aBXDo1sUUIPDAO')
 INSERT INTO users (id_user, username, password) VALUES(default, 'user@.es' ,'$2a$10$6wDeb3wqewh/nSWKVyIh5.0D4XjqyktJ5afuca0aBXDo1sUUIPDAO')
 
-INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 1)
-INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 2)
-INSERT INTO users_event (user_id_user, event_id_event) VALUES (1, 3)
-INSERT INTO users_event (user_id_user, event_id_event) VALUES (2, 1)
-INSERT INTO users_event (user_id_user, event_id_event) VALUES (3, 2)
-
 INSERT INTO roles (id_role, role) VALUES (default, "ROLE_ADMIN")
 INSERT INTO roles (id_role, role) VALUES (default, "ROLE_USER")
 
 INSERT INTO roles_users (user_id, role_id) VALUES (1, 1)
 INSERT INTO roles_users (user_id, role_id) VALUES (4, 2)
+
+INSERT INTO events_users (user_id, event_id) VALUES (1, 1)
+INSERT INTO events_users (user_id, event_id) VALUES (4, 2)
