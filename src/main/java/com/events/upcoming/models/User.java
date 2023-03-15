@@ -1,7 +1,5 @@
 package com.events.upcoming.models;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -27,8 +25,9 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany
-    private List<Event> event;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "events_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    private Set<Event> events;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
@@ -38,12 +37,12 @@ public class User {
 
     }
 
-    public User(Long id, String username, String password, Set<Role> roles) {
+    public User(Long id, String username, String password, Set<Role> roles, Set<Event> events) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.event = new ArrayList<>();
         this.roles = roles;
+        this.events = events;
 
     }
 
@@ -71,14 +70,6 @@ public class User {
         this.password = password;
     }
     
-    public List<Event> getEvents() {
-        return event;
-    }
-
-    public void setEvents(List<Event> event) {
-        this.event = event;
-    }   
-    
     public Set<Role> getRoles() {
         return roles;
     }
@@ -86,10 +77,18 @@ public class User {
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
+    
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
 
     @Override
     public String toString() {
-        return "User [id_user=" + id + ", username=" + username + ", password=" + password + roles + "]";
+        return "User [id_user=" + id + ", username=" + username + ", password=" + password + roles + events + "]";
     }
 }
 
