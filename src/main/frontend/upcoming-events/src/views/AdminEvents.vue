@@ -30,6 +30,7 @@ onBeforeMount(async () => {
           </button>
           </div>
      </div>
+
     
     <div id="EventsContainer">
         <div class="eventos">
