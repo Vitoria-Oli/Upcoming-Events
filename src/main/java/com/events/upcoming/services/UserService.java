@@ -26,7 +26,19 @@ public class UserService {
         return repository.save(user);
     }
 
+    public User storeEvent(User user) {
+        return repository.save(user);
+    }
+
     public List<User> listAll() {
         return repository.findAll();
+    }
+
+    public User listOne(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public User listOneByName(String userName) {
+        return repository.findByUsername(userName).orElse(null);
     }
 }
