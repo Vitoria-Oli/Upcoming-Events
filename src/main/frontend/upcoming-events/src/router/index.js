@@ -24,7 +24,7 @@ const router = createRouter({
       path: "/AddEvents",
       name: "AddEvents",
       component: () => import("../views/AddEvents.vue"),
-      meta: { requiresAuth: true },
+      // meta: { requiresAuth: true },
     },
     {
       path: "/CloseSessionButton",
@@ -41,7 +41,7 @@ const router = createRouter({
       path: "/AdminEvents",
       name: "AdminEvents",
       component: () => import("../views/AdminEvents.vue"),
-      meta: { requiresAuth: true },
+      // meta: { requiresAuth: true },
     },
     {
       path: "/DeleteAllButton",
