@@ -1,8 +1,10 @@
 package com.events.upcoming.controllers;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.events.upcoming.models.Role;
 import com.events.upcoming.models.User;
 import com.events.upcoming.services.UserService;
 
@@ -25,11 +28,17 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping(value = "/register")
+    @PostMapping(value = "/register/add")
     public ResponseEntity<Map<String, String>> save(@RequestBody User user) {
 
         try {
-            System.out.println(user.getPassword());
+            Role userRole = new Role();
+            userRole.setId_role((long) 2);
+            userRole.setRole("ROLE_USER");
+            System.out.println(userRole);
+            Set<Role> set = new HashSet<Role>();
+            set.add(userRole);
+            user.setRoles(set);
             User userDB = service.store(user);
             Map<String, String> json = new HashMap<>();
 
@@ -45,7 +54,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("")
+    @GetMapping("/register")
     public List<User> listAll() {
         return service.listAll();
     }
