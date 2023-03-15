@@ -40,7 +40,8 @@ const props = defineProps({
       type="button"
       class="btn BtnPopUp"
       data-bs-toggle="modal"
-      :data-bs-target="`#event${event.id}`">
+      :data-bs-target="`#event${event.id}`"
+    >
       >>> ver más
     </button>
     <div class="footerCard">
