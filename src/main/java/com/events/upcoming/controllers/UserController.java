@@ -62,6 +62,7 @@ public class UserController {
             Event userEvent = new Event();
             userEvent.setId(id);
             Set<Event> set = new HashSet<Event>();
+            set.addAll(userObject.getEvents());
             set.add(userEvent);
             userObject.setEvents(set);
             User userDB = service.storeEvent(userObject);
