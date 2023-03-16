@@ -32,7 +32,8 @@ const date = computed({
             <div id="nav" class="navbar-nav momarnopad">
               <router-link to="/">Inicio</router-link>
               <router-link to="/UserRegister">Date de alta</router-link>
-              <router-link to="/Wellcome">Login</router-link>
+              <router-link to="/SelectedEvents" v-if="isAuthenticated.roles=='ROLE_ADMIN'">Zona de usuario</router-link>
+              <router-link to="/Welcome" v-else>Login</router-link>
             </div>
           </div>
         </div>
