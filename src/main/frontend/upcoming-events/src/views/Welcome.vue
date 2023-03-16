@@ -56,13 +56,13 @@ const submitData = async () => {
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
           <button type="button" class="btn btn-warning">Borrar</button>
           <button
-            type="button"
+            type="submit"
             class="green btn btn-success"
             @click="submitData"
           >
             ¡Adentro!
           </button>
-          <v-btn type="submit" block class="mt-2">Submit</v-btn>
+          <!-- <v-btn type="submit" block class="mt-2">Submit</v-btn> -->
         </div>
       </div>
     </v-form>
