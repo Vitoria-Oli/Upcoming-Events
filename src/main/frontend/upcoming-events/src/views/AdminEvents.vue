@@ -22,12 +22,8 @@ onBeforeMount(async () => {
         <h2><span>Listado de eventos:</span></h2>
       </h1>
     <div id="ContainerButton"> 
-         <button type="button" class="btn btn-sucess btn-add" id="reset" @click="save()">
-            Añadir<br>Evento
-          </button>
-          <button type="button" class="btn btn-success btn-add" id="send" @click="save()">
-            Cerrar<br>Sesión
-          </button>
+        <AddEventButton></AddEventButton>
+        <CloseSessionButton></CloseSessionButton>
           </div>
      </div>
 
@@ -56,7 +52,7 @@ onBeforeMount(async () => {
         
       #ContainerButton{
         display: flex;
-        align-self: end;
+        gap: 8%;
         margin-top: 20px;
       }
     }
