@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { computed } from "@vue/reactivity";
+
 const date = computed({
   get() {
     let today = new Date();
@@ -12,6 +13,9 @@ const date = computed({
     return `${day}/${month}/${year}`;
   },
 });
+
+const isAuthenticated = useAuthStore();
+
 </script>
 
 <template>
