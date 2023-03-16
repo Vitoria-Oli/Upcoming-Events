@@ -1,10 +1,6 @@
 <script setup>
 import { onBeforeMount } from "vue";
-import { useUsersStore } from "../stores/Users";
-const store = useUsersStore();
-onBeforeMount(async () => {
-  await store.fetchUsers("3");
-});
+
 const props = defineProps({
   event: {
     type: Object,
