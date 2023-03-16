@@ -30,7 +30,7 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping(value = "/register/add", consumes = {"application/json"})
+    @PostMapping(value = "/register/add", consumes = {"*/*"})
     public ResponseEntity<Map<String, String>> save(@RequestBody User user) {
 
         try {
@@ -89,4 +89,5 @@ public class UserController {
     public User listOne(@PathVariable Long id) {
         return service.listOne(id);
     }
+
 }

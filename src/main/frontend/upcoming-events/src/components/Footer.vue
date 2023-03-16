@@ -1,6 +1,7 @@
 <script setup>
+import { RouterLink } from "vue-router";
 import { computed } from "@vue/reactivity";
-const date = computed({
+import { useAuthStore } from "../stores/auth-storage";const date = computed({
   get() {
     let today = new Date();
     let day = today.getDate();
@@ -11,6 +12,9 @@ const date = computed({
     return `${day}/${month}/${year}`;
   },
 });
+
+const isAuthenticated = useAuthStore();
+
 </script>
 
 <template>
@@ -35,11 +39,11 @@ const date = computed({
       <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/UserRegister">Registrate</router-link></li>
-        <li><router-link to="/Welcome">Login</router-link></li>
-        <li><router-link to="/SelectedEvents">Zona de usuario</router-link></li>
-        <li><router-link to="/AdminEvents">Zona de admninistrador</router-link></li>
-        <li><router-link to="/AddEvents">Añadir eventos</router-link></li>
-        <li><router-link to="/ModifyEvents">Modificar eventos</router-link></li>
+        <li v-if="!isAuthenticated.isAuthenticate"><router-link to="/Welcome">Login</router-link></li>
+        <li v-if="isAuthenticated.roles=='ROLE_USER'"><router-link to="/SelectedEvents">Zona de usuario</router-link></li>
+        <li v-if="isAuthenticated.roles=='ROLE_ADMIN'"><router-link to="/AdminEvents">Zona de admninistrador</router-link></li>
+        <li v-if="isAuthenticated.roles=='ROLE_ADMIN'"><router-link to="/AddEvents">Añadir eventos</router-link></li>
+        <li v-if="isAuthenticated.roles=='ROLE_ADMIN'"><router-link to="/ModifyEvents">Modificar eventos</router-link></li>
       </ul>
     </div>
   </footer>
