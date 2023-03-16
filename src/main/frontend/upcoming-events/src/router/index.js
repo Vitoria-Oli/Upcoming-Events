@@ -21,21 +21,9 @@ const router = createRouter({
       component: () => import("../views/Welcome.vue"),
     },
     {
-      path: "/AddEvents",
-      name: "AddEvents",
-      component: () => import("../views/AddEvents.vue"),
-      // meta: { requiresAuth: true },
-    },
-    {
-      path: "/CloseSessionButton",
-      name: "CloseSessionButton",
-      component: () => import("../components/CloseSessionButton.vue"),
-    },
-    {
-      path: "/ModifyEvents",
-      name: "ModifyEvents",
-      component: () => import("../views/ModifyEvents.vue"),
-      meta: { requiresAuth: true },
+      path: "/SelectedEvents",
+      name: "SelectedEvents",
+      component: () => import("../views/SelectedEvents.vue"),
     },
     {
       path: "/AdminEvents",
@@ -44,28 +32,25 @@ const router = createRouter({
       // meta: { requiresAuth: true },
     },
     {
-      path: "/DeleteAllButton",
-      name: "DeleteAllButton",
-      component: () => import("../components/DeleteAllButton.vue"),
+      path: "/AddEvents",
+      name: "AddEvents",
+      component: () => import("../views/AddEvents.vue"),
+      // meta: { requiresAuth: true },
     },
     {
-      path: "/AddEventButton",
-      name: "AddEventButton",
-      component: () => import("../components/AddEventButton.vue"),
-    },
-    {
-      path: "/SelectedEvents",
-      name: "SelectedEvents",
-      component: () => import("../views/SelectedEvents.vue"),
+      path: "/ModifyEvents",
+      name: "ModifyEvents",
+      component: () => import("../views/ModifyEvents.vue"),
+      meta: { requiresAuth: true },
     }
   ],
 });
 
-router.beforeEach( async (to, from) => {
-	const auth = useAuthStore();
-	if(to.meta.requiresAuth && !auth.isAuthenticate) {
-		return { name: 'Welcome' }
-	}
+router.beforeEach(async (to, from) => {
+  const auth = useAuthStore();
+  if (to.meta.requiresAuth && !auth.isAuthenticate) {
+    return { name: 'Welcome' }
+  }
 })
 
 
