@@ -1,12 +1,9 @@
 <script setup>
-// import { onBeforeMount } from "vue";
-// import {useRegisterAdd} from "../api/register/add";
-
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import CloseSessionButton from "../components/CloseSessionButton.vue";
 
-
-  function resetForm() {
+function resetForm() {
   document.getElementById("userName").value = "";
   document.getElementById("password").value = "";
   incident.userName = "";
@@ -15,21 +12,25 @@ import Footer from "../components/Footer.vue";
 
 let incident = {
   userName: "",
-  password: ""
-}
+  password: "",
+};
 async function save() {
-  if(incident.userName=="") {
+  if (incident.userName == "") {
     alert("email is needed");
     return;
   }
-  if(incident.password=="") {
+  if (incident.password == "") {
     alert("password is needed");
     return;
   }
 
-  
+  const baseUrl = "http://localhost:8080";
+  let auth = "";
+  auth = encodeB64(incident.password);
+  incident.password = auth;
+
   const payload = JSON.stringify(this.incident);
-  console.log(payload)
+  console.log(payload);
   const url = "http://localhost:8080/api/register/add";
   const r = await fetch(url, {
     mode: "no-cors",
@@ -37,8 +38,14 @@ async function save() {
     body: payload,
     headers: {
       "Content-type": "application/json",
-    }
+    },
   });
+
+  function encodeB64(password) {
+      const encodeData = window.btoa(`${password}`);
+      return encodeData;
+    }
+  
   const response = await r;
   console.log(response);
   if (response) {
@@ -50,22 +57,26 @@ async function save() {
 }
 
 
-
 </script>
 
 <template>
   <Header></Header>
-  <h1>
-    Date de alta:
-    <span id="Subtitle"
-      >es necesario estar registrado para poder apuntarte a nuestros
-      eventos.</span
-    >
-  </h1>
+  <div id="TitleAndButton">
+    <h1>
+      Date de alta:
+      <span id="Subtitle"
+        >es necesario estar registrado para poder apuntarte a nuestros
+        eventos.</span
+      >
+    </h1>
+    <CloseSessionButton></CloseSessionButton>
+  </div>
   <form id="form">
     <div class="form-group">
-      <label for="name" id="conditions"><span class="Asterisk">* </span>Todos los campos son obligatorios</label>
-      
+      <label for="name" id="conditions"
+        ><span class="Asterisk">* </span>Todos los campos son
+        obligatorios</label
+      >
     </div>
     <div class="form-group">
       <label for="userName"><span class="Asterisk">* </span>E-mail</label>
@@ -95,7 +106,7 @@ async function save() {
         ><span class="Asterisk">* </span>Repite tu contraseña</label
       >
       <input
-        v-model="incident.ConfirmPassword"
+        v-model="ConfirmPassword"
         type="password"
         class="form-control form-control-lg"
         id="ConfirmPassword"
@@ -104,7 +115,6 @@ async function save() {
       />
     </div>
     <div id="buttons-box">
-      
       <button type="button" class="btn btn-success" id="send" @click="save()">
         Suscribirse
       </button>
@@ -113,7 +123,8 @@ async function save() {
         type="button"
         class="btn btn-success"
         id="reset"
-        @click="resetForm()">
+        @click="resetForm()"
+      >
         Borrar
       </button>
     </div>
@@ -141,21 +152,21 @@ async function save() {
 
     .form-group {
       margin: 1% 0 1% 0;
-      #conditions{
+      #conditions {
         font-weight: normal;
         display: flex;
         justify-content: flex-end;
         margin-right: 4%;
         margin-bottom: -6vh;
       }
-      label{
+      label {
         font-weight: bold;
         font-size: 1.4em;
-        .Asterisk{
-        color: $Red;
+        .Asterisk {
+          color: $Red;
+        }
       }
-      }
-      
+
       input {
         border: solid 2px $Blue;
       }
@@ -166,13 +177,12 @@ async function save() {
       justify-content: flex-start;
       align-items: center;
       gap: 20px;
-      #send{
+      #send {
         background-color: $GreenButton;
         border: solid 3px $GreenButton;
-        
       }
 
-      #reset{
+      #reset {
         background-color: $YellowButton;
         border: solid 3px $YellowButton;
       }

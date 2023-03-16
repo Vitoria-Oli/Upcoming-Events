@@ -41,4 +41,5 @@ public class UserService {
     public User listOneByName(String userName) {
         return repository.findByUsername(userName).orElse(null);
     }
+
 }

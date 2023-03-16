@@ -7,6 +7,8 @@ export default class AuthConnection {
   async login(username, password) {
     this.#auth = this.encodeB64(username, password);
 
+    console.log(this.#auth)
+
     const myHeaders = new Headers();
     myHeaders.append("Authorization", `Basic ${this.#auth}`);
     myHeaders.append("Content-Type", "text/plain");
