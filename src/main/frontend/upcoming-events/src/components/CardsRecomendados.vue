@@ -1,9 +1,18 @@
 <script setup>
+import { computed } from '@vue/reactivity';
+
 const props = defineProps({
   event: {
     type: Object,
   },
 });
+
+const randomImage = computed({
+  get() {
+    return "default-" + Math.floor(Math.random() * 6) + ".jpg";
+  }
+})
+
 </script>
 
 <template>
@@ -12,9 +21,14 @@ const props = defineProps({
       class="align-end photo"
       height="164"
       :src="`http://localhost:8080/images/${event.image[0].name}`"
-      cover
+            cover
+            v-if="event.image[0]"
     >
     </v-img>
+    <v-img class="align-end photo" height="164" :src="`http://localhost:8080/images/${randomImage}`" cover
+        v-else>
+      </v-img>
+
     <v-card-subtitle class="date"
       >{{ event.date }} - {{ event.hour }}</v-card-subtitle
     >
@@ -58,8 +72,13 @@ const props = defineProps({
             class="modal-img"
             :src="`http://localhost:8080/images/${event.image[0].name}`"
             cover
+            v-if="event.image[0]"
           >
           </v-img>
+          <v-img class="modal-img" :src="`http://localhost:8080/images/${randomImage}`" cover
+        v-else>
+          </v-img>
+
           <div class="modal-info">
             <button
               type="button"

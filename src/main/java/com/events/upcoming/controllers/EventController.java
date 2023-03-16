@@ -38,7 +38,7 @@ public class EventController {
     public void delete(@PathVariable Long id){
         service.delete(id);
     }
-    @PostMapping("")
+    @PostMapping("/add")
     @ResponseStatus(value = HttpStatus.CREATED)
     public ResponseEntity<?> store(@RequestBody Event newevent){
         
