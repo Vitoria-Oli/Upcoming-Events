@@ -30,7 +30,7 @@ public class UserController {
         this.service = service;
     }
 
-    @PostMapping(value = "/register/add")
+    @PostMapping(value = "/register/add", consumes = {"application/json"})
     public ResponseEntity<Map<String, String>> save(@RequestBody User user) {
 
         try {

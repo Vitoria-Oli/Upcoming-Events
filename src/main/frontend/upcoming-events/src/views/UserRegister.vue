@@ -95,7 +95,7 @@ async function save() {
         ><span class="Asterisk">* </span>Repite tu contraseña</label
       >
       <input
-        v-model="incident.ConfirmPassword"
+        v-model="ConfirmPassword"
         type="password"
         class="form-control form-control-lg"
         id="ConfirmPassword"
