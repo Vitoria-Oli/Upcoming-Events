@@ -12,8 +12,7 @@
 #close{
     font-family: Dosis;
     background-color: $GreenButton;
-    border: solid 3px $GreenButton;
-    width: 6vw;
+    padding: 1vh 1.3vw;
 }
     
 </style>

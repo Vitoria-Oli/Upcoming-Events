@@ -35,11 +35,11 @@ const date = computed({
       <ul>
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/UserRegister">Registrate</router-link></li>
-        <li><router-link to="/Welcome">Zona de usuario</router-link></li>
-        <li><router-link to="/AddEvents">Zona de administración</router-link></li>
-        <li><router-link to="/ModifyEvents">Zona de modificación</router-link></li>
-        <li><router-link to="/AdminEvents">Zona de fulanito</router-link></li>
-        <li><router-link to="/SelectedEvents">Zona SelectedEvents</router-link></li>
+        <li><router-link to="/Welcome">Login</router-link></li>
+        <li><router-link to="/SelectedEvents">Zona de usuario</router-link></li>
+        <li><router-link to="/AdminEvents">Zona de admninistrador</router-link></li>
+        <li><router-link to="/AddEvents">Añadir eventos</router-link></li>
+        <li><router-link to="/ModifyEvents">Modificar eventos</router-link></li>
       </ul>
     </div>
   </footer>
