@@ -1,7 +1,4 @@
 <script setup>
-// import { onBeforeMount } from "vue";
-// import {useRegisterAdd} from "../api/register/add";
-
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 
@@ -9,6 +6,7 @@ import Footer from "../components/Footer.vue";
   function resetForm() {
   document.getElementById("userName").value = "";
   document.getElementById("password").value = "";
+  document.getElementById("ConfirmPassword").value = ""
   incident.userName = "";
   incident.password = "";
 }
@@ -177,6 +175,24 @@ async function save() {
         border: solid 3px $YellowButton;
       }
     }
+  }
+  @media (max-width: 500px){
+    form .form-group label{
+      font-size: 1.1em;
+      
+    }
+    form .form-group #conditions{
+        margin-bottom: -5vh;
+      }
+  }
+  @media (max-width: 350px){
+    form .form-group label{
+      font-size: 1.0em;
+      
+    }
+    form .form-group #conditions{
+        margin-bottom: -4vh;
+      }
   }
 }
 </style>

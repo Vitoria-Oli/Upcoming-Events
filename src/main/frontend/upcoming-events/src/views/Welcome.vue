@@ -11,11 +11,10 @@ let password = "";
 const store = useAuthStore();
 
 const submitData = async () => {
-		const authService = new AuthService();
-		const response = await authService.login(userName, password);
-    router.push("/")
+  const authService = new AuthService();
+  const response = await authService.login(userName, password);
+  router.push("/");
 };
-
 </script>
 
 <template>
@@ -23,7 +22,7 @@ const submitData = async () => {
   <div id="info">
     <div class="welcome">
       <h2>¡Bienvenido!</h2>
-      <p>
+      <p id="Conditions">
         Es necesario estar registrado para poder apuntarte a nuestros
         eventos.<br />
         Si aún no estás dado de alta,
@@ -33,7 +32,7 @@ const submitData = async () => {
     <v-form validate-on="submit" @submit.prevent="submitData">
       <div class="pack">
         <div class="tex">
-          <h3><span>* </span>E-mail</h3>
+          <label for="email"><span>* </span>E-mail</label>
           <p><span>* </span>Todos los campos son obligatorios</p>
         </div>
         <input
@@ -44,7 +43,7 @@ const submitData = async () => {
           required
         />
         <div class="contra">
-          <h3><span>* </span>Contraseña</h3>
+          <label for="password"><span>* </span>Contraseña</label>
         </div>
         <input
           v-model="password"
@@ -54,7 +53,8 @@ const submitData = async () => {
           required
         />
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button type="button" class="btn btn-warning">Borrar</button>
+          <button type="button" id="reset" class="btn btn-success">Borrar</button>
+
           <button
             type="submit"
             class="green btn btn-success"
@@ -62,7 +62,6 @@ const submitData = async () => {
           >
             ¡Adentro!
           </button>
-          <!-- <v-btn type="submit" block class="mt-2">Submit</v-btn> -->
         </div>
       </div>
     </v-form>
@@ -74,6 +73,7 @@ const submitData = async () => {
 @import "../assets/scss/Variables.scss";
 .welcome {
   display: flex;
+  flex-wrap: wrap;
   h2 {
     color: $Blue;
     font-size: 48px;
@@ -82,57 +82,65 @@ const submitData = async () => {
     margin-top: 65px;
     font-weight: bold;
   }
-  p {
+  #Conditions {
     margin-top: 70px;
     margin-left: 10px;
     font-family: Dosis;
   }
 }
-.tex {
-  display: flex;
-  margin-top: 5%;
 
-  h3 {
-    font-size: 20px;
-    margin-left: 5%;
-    font-family: Dosis;
-    font-weight: bold;
-  }
-  p {
-    margin-left: 70%;
-    font-family: Dosis;
-  }
-}
 
 .contra {
   margin-top: 2%;
 
-  h3 {
-    font-size: 20px;
-    margin-left: 5%;
-    font-family: Dosis;
-    font-weight: bold;
-  }
 }
 
 .pack {
   width: 80%;
   margin: auto;
+  .tex {
+  display: flex;
+  margin-top: 5%;
+
+  p {
+    margin-left: 70%;
+    font-family: Dosis;
+  }
+}
+  label {
+    font-size: 20px;
+    margin-left: 5%;
+    font-family: Dosis;
+    font-weight: bold;
+  }
   input {
     border: 1px solid $Blue;
   }
-}
-
-.d-grid {
+  .d-grid {
   margin-top: 5%;
-}
-button {
-  color: #333333;
+  #reset{
+    background-color: $YellowButton;
+  }
 }
 span {
-  color: red;
+  color: $Red;
 }
 .green {
   background-color: #00c000;
 }
+  
+}
+
+// .d-grid {
+//   margin-top: 5%;
+//   #reset{
+//     background-color: $YellowButton;
+//   }
+// }
+// span {
+//   color: $Red;
+// }
+// .green {
+//   background-color: #00c000;
+// }
 </style>

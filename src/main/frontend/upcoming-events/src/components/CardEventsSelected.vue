@@ -1,34 +1,29 @@
 <script setup>
-import { onBeforeMount } from "vue";
-import { useUsersStore } from "../stores/Users";
-
-// const store = useUsersStore();
-// onBeforeMount(async () => {
-//   await store.fetchUsers("3");
-// });
-
+import { computed } from '@vue/reactivity';
 const props = defineProps({
   event: {
     type: Object,
   },
 });
-</script>
 
+const randomImage = computed({
+  get() {
+    return "default-" + Math.floor(Math.random() * 6) + ".jpg";
+  }
+})
+
+</script>
 <template>
   <v-card class="mx-auto card">
     <div class="headerCard">
-      <v-img
-        class="align-end photo"
-        width="164"
-        height="164"
-        :src="`http://localhost:8080/images/${event.image[0].name}`"
-        cover
-      >
+      <v-img class="align-end photo" width="164" height="164" :src="`http://localhost:8080/images/${event.image[0].name}`"
+        cover v-if="event.image[0]">
+      </v-img>
+      <v-img class="align-end photo" width="164" height="164" :src="`http://localhost:8080/images/${randomImage}`" cover
+        v-else>
       </v-img>
       <div class="headerTextcard">
-        <v-card-subtitle class="date"
-          >{{ event.date }} - {{ event.hour }}</v-card-subtitle
-        >
+        <v-card-subtitle class="date">{{ event.date }} - {{ event.hour }}</v-card-subtitle>
         <v-card-title class="pt-4 eventTitle">
           {{ event.name }}
         </v-card-title>
@@ -39,13 +34,7 @@ const props = defineProps({
         </v-card-text>
       </div>
     </div>
-
-    <button
-      type="button"
-      class="btn BtnPopUp"
-      data-bs-toggle="modal"
-      :data-bs-target="`#event${event.id}`"
-    >
+    <button type="button" class="btn BtnPopUp" data-bs-toggle="modal" :data-bs-target="`#event${event.id}`">
       >>> ver más
     </button>
     <div class="footerCard">
@@ -61,30 +50,26 @@ const props = defineProps({
       </v-card-actions>
     </div>
   </v-card>
-
-    <div
-      class="modal fade"
-      :id="`event${event.id}`"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-body">
-            <v-img
-              class="align-end photo"
-              :src="`http://localhost:8080/images/${event.image[0].name}`"
-              cover
-            >
-            </v-img>
-            <div class="info">
-              <p class="date">{{ event.date }} - {{ event.hour }}</p>
-              <h3>{{ event.name }}</h3>
-              <p class="text">
-                {{ event.description }}
-              </p>
-            </div>
+  <div class="modal fade popup" :id="`event${event.id}`" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <v-img class="modal-img" :src="`http://localhost:8080/images/${event.image[0].name}`" cover
+            v-if="event.image[0]">
+          </v-img>
+          <v-img class="modal-img" :src="`http://localhost:8080/images/${randomImage}`" cover
+        v-else>
+          </v-img>
+          <div class="modal-info">
+            <button type="button" class="btn btn-secondary x-close" data-bs-dismiss="modal">
+              X
+            </button>
+            <p class="date">{{ event.date }} - {{ event.hour }}</p>
+            <h3 class="eventTitle">{{ event.name }}</h3>
+            <p class="text">
+              {{ event.description }}
+            </p>
             <div class="infoPlaces">
               <p class="places">
                 Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
@@ -92,22 +77,17 @@ const props = defineProps({
               <v-btn class="button">¡Bórrame!</v-btn>
             </div>
           </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              Close
-            </button>
-          </div>
         </div>
       </div>
     </div>
+  </div>
 </template>
-
 <style lang="scss" scoped>
 @import "../assets/scss/Variables.scss";
+
+.popup {
+  background: rgba(0, 0, 0, 0.5) !important;
+}
 
 .card {
   font-family: Dosis;
@@ -115,10 +95,10 @@ const props = defineProps({
   margin: 20px !important;
   min-width: 420px;
 
-
   &:hover {
     box-shadow: 8px 8px 8px rgba(128, 128, 128, 0.5);
   }
+
 
   .nomargin {
     margin-bottom: 0;
@@ -173,10 +153,13 @@ const props = defineProps({
     padding: 0 15px;
     color: $Blue;
     border: none;
+
     &:hover {
       text-decoration: underline;
     }
   }
+
+
   .footerCard {
     display: flex;
     margin-bottom: 10px;
@@ -197,6 +180,93 @@ const props = defineProps({
       &:hover {
         color: $Blue;
         background-color: $White;
+      }
+    }
+  }
+}
+
+.modal-dialog {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .modal-content {
+    width: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal-body {
+      width: 60vw;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .modal-img {
+        width: 20vw;
+        height: 44vh;
+        border-radius: 5%;
+        margin-right: 2vw;
+      }
+
+      .modal-info {
+        background-color: $Yellow;
+        width: 100vw;
+        border-radius: 3%;
+
+        .x-close {
+          background-color: $Blue;
+          display: flex;
+          margin-left: 85%;
+          margin-top: 2%;
+        }
+
+        .date {
+          color: $Blue;
+          font-size: 1.4rem;
+          margin-left: 2vw;
+        }
+
+        .eventTitle {
+          color: $Blue;
+          font-weight: bold;
+          font-size: 2vw;
+          margin-left: 2vw;
+        }
+
+        .text {
+          font-size: 1.3rem;
+          margin-bottom: 3px;
+          margin-left: 2vw;
+        }
+
+        .infoPlaces {
+          margin-top: 2vw;
+          margin-right: 3rem;
+          margin-left: 2vw;
+          display: flex;
+          justify-content: space-between;
+
+        }
+
+        .places {
+          font-size: 1.4rem;
+          margin-left: 2vw;
+        }
+
+        .button {
+          color: $White;
+          background-color: $Blue;
+          font-size: 16px;
+          font-weight: bold;
+          font-variant: initial !important;
+          margin-right: 7px;
+
+          &:hover {
+            color: $Blue;
+            background-color: $White;
+          }
+        }
       }
     }
   }

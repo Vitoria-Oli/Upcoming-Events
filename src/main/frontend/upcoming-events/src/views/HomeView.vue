@@ -1,6 +1,5 @@
 <script setup>
 import { RouterLink } from "vue-router"
-
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import CardsRecomendados from "../components/CardsRecomendados.vue";
@@ -10,7 +9,6 @@ import { onBeforeMount } from "vue";
 import { computed } from "@vue/reactivity";
 import { ref } from "vue";
 import { useAuthStore } from "../stores/auth-storage";
-
 import CloseSessionButton from "../components/CloseSessionButton.vue";
 
 
@@ -115,20 +113,14 @@ const numPages = computed(() => {
   }
 
   #EventsContainer{
-    // display: flex;
+    
     .eventos {
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr;
     margin: 0 1% 0 1%;
   }
-  // #TitleCardsEvents{
-  //   // display: grid;
-  //   // grid-template-columns: auto;
-  //   // grid-template-rows: auto;
-  //   // grid-column: 1/1;
-  //   // grid-row: 1/1;
-  // }
+
   }
   
 
