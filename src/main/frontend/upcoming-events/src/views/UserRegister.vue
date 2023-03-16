@@ -1,15 +1,56 @@
 <script setup>
+// import { onBeforeMount } from "vue";
+// import {useRegisterAdd} from "../api/register/add";
+
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 
-function resetForm() {
-  document.getElementById("email").value = "";
+
+  function resetForm() {
+  document.getElementById("userName").value = "";
   document.getElementById("password").value = "";
-  document.getElementById("ConfirmPassword").value = "";
-  // incident.email = "";
-  // incident.password = "";
-  // incident.ConfirmPassword ="";
+  incident.userName = "";
+  incident.password = "";
 }
+
+let incident = {
+  userName: "",
+  password: ""
+}
+async function save() {
+  if(incident.userName=="") {
+    alert("email is needed");
+    return;
+  }
+  if(incident.password=="") {
+    alert("password is needed");
+    return;
+  }
+
+  
+  const payload = JSON.stringify(this.incident);
+  console.log(payload)
+  const url = "http://localhost:8080/api/register/add";
+  const r = await fetch(url, {
+    mode: "no-cors",
+    method: "POST",
+    body: payload,
+    headers: {
+      "Content-type": "application/json",
+    }
+  });
+  const response = await r;
+  console.log(response);
+  if (response) {
+    alert("Added " + incident.userName);
+    resetForm();
+  } else {
+    alert("An error has occurred.\nPlease try again after a few minutes.");
+  }
+}
+
+
+
 </script>
 
 <template>
@@ -27,12 +68,12 @@ function resetForm() {
       
     </div>
     <div class="form-group">
-      <label for="email"><span class="Asterisk">* </span>E-mail</label>
+      <label for="userName"><span class="Asterisk">* </span>E-mail</label>
       <input
-        v-model="inputResetEmail"
+        v-model="incident.userName"
         type="email"
         class="form-control form-control-lg"
-        id="email"
+        id="userName"
         placeholder="Escribe un email"
         required
       />
@@ -40,7 +81,7 @@ function resetForm() {
     <div class="form-group">
       <label for="password"><span class="Asterisk">* </span>Contraseña</label>
       <input
-        v-model="inputResetPassword"
+        v-model="incident.password"
         type="password"
         class="form-control form-control-lg"
         id="password"
@@ -54,7 +95,7 @@ function resetForm() {
         ><span class="Asterisk">* </span>Repite tu contraseña</label
       >
       <input
-        v-model="inputResetConfirmPassword"
+        v-model="incident.ConfirmPassword"
         type="password"
         class="form-control form-control-lg"
         id="ConfirmPassword"
@@ -72,8 +113,7 @@ function resetForm() {
         type="button"
         class="btn btn-success"
         id="reset"
-        @click="resetForm()"
-      >
+        @click="resetForm()">
         Borrar
       </button>
     </div>
