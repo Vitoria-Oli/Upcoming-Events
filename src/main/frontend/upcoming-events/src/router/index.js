@@ -24,34 +24,34 @@ const router = createRouter({
       path: "/SelectedEvents",
       name: "SelectedEvents",
       component: () => import("../views/SelectedEvents.vue"),
+      meta: { requiresAuth: true },
     },
     {
       path: "/AdminEvents",
       name: "AdminEvents",
       component: () => import("../views/AdminEvents.vue"),
-      // meta: { requiresAuth: true },
+      meta: { requiresAuth: true },
     },
     {
       path: "/AddEvents",
       name: "AddEvents",
       component: () => import("../views/AddEvents.vue"),
-      // meta: { requiresAuth: true },
+      meta: { requiresAuth: true },
     },
     {
       path: "/ModifyEvents",
       name: "ModifyEvents",
       component: () => import("../views/ModifyEvents.vue"),
-      // meta: { requiresAuth: true },
-    }
+      meta: { requiresAuth: true },
+    },
   ],
 });
 
 router.beforeEach(async (to, from) => {
   const auth = useAuthStore();
   if (to.meta.requiresAuth && !auth.isAuthenticate) {
-    return { name: 'Welcome' }
+    return { name: "Welcome" };
   }
-})
-
+});
 
 export default router;

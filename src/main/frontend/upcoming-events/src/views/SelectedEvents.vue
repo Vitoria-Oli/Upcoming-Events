@@ -1,10 +1,12 @@
 <script setup>
-import Header from "../components/Header.vue";
-import Footer from "../components/Footer.vue";
-import PaginationEvents from "../components/PaginationEvents.vue";
-import CardEventsSelected from "../components/CardEventsSelected.vue";
+import { useAuthStore } from "../stores/auth-storage";
+import { ref } from "vue";
+import { computed } from "@vue/reactivity";
 import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
+import Header from "../components/Header.vue";
+import Footer from "../components/Footer.vue";
+import CardEventsSelected from "../components/CardEventsSelected.vue";
 import CloseSessionButton from "../components/CloseSessionButton.vue";
 import DeleteAllButton from "../components/DeleteAllButton.vue";
 
@@ -13,21 +15,45 @@ const store = useEventsStore();
 onBeforeMount(async () => {
   await store.fetchEvents();
 });
+
+const isAuthenticated = useAuthStore();
+
+let pageSize = 2;
+let pageNo = ref(1);
+
+const eventsPaginated = computed(() => {
+  const startIndex = (pageNo.value - 1) * pageSize;
+  const data = [...store.Events];
+  return data.splice(startIndex, pageSize);
+});
+
+const numPages = computed(() => {
+  return Math.ceil(store.Events.length / pageSize);
+});
 </script>
 
 <template>
   <Header></Header>
 
-
   <div id="RecomendadosContainer">
     <div id="TitleAndButton">
-    <h1>Bienvenido, Fulanito. <br> <span id="Subtitle">Estos son tus evento seleccionados:</span></h1>
-    <div id="ContainerButton"><DeleteAllButton></DeleteAllButton> <CloseSessionButton></CloseSessionButton></div></div>
+      <h1>
+        ¡Bienvenido, {{ isAuthenticated.username }}!<br />
+        <span id="Subtitle">Estos son tus evento seleccionados:</span>
+      </h1>
+      <div id="ContainerButton">
+        <DeleteAllButton></DeleteAllButton>
+        <CloseSessionButton></CloseSessionButton>
+      </div>
+    </div>
     <div class="eventos">
-      <CardEventsSelected v-for="event in store.Events" :event="event"></CardEventsSelected>
+      <CardEventsSelected
+        v-for="event in eventsPaginated"
+        :event="event"
+      ></CardEventsSelected>
     </div>
   </div>
-  <PaginationEvents></PaginationEvents>
+  <v-pagination v-model="pageNo" :length="numPages"></v-pagination>
   <Footer></Footer>
 </template>
 
@@ -36,27 +62,27 @@ onBeforeMount(async () => {
 
 * {
   font-family: Dosis;
-  #TitleAndButton{
+  #TitleAndButton {
     display: flex;
     justify-content: space-between;
     margin-top: 2%;
     h1 {
-    color: $Blue;
-    margin: 1% 0 2% 5%;
-    font-weight: 700;
-    #Subtitle {
       color: $Blue;
-      font-size: 0.6em;
+      margin: 1% 0 2% 5%;
+      font-weight: 700;
+      #Subtitle {
+        color: $Blue;
+        font-size: 0.6em;
+      }
+    }
+    #ContainerButton {
+      display: flex;
+      gap: 7%;
+      margin-right: 24vh;
+      justify-content: center;
+      align-items: center;
     }
   }
-  #ContainerButton{
-    display: flex;
-    gap: 7%;
-    margin-right: 24vh;
-    justify-content: center;
-    align-items: center;
-  }}
-
 
   .v-slide-group__content {
     justify-content: center;

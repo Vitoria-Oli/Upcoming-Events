@@ -1,5 +1,6 @@
 <script setup>
 import { useAuthStore } from '../stores/auth-storage';
+import router from '../router';
 
 const useAuthoritation = useAuthStore();
 async function closeSession() {
@@ -12,15 +13,18 @@ async function closeSession() {
         useAuthoritation.isAuthenticate = false;
         useAuthoritation.username = "";
         useAuthoritation.roles = [];
+        router.push("/");
     } else {
         alert("An error has occurred.\nPlease try again after a few minutes.");
     }
 }
 
+const isAuthenticated = useAuthStore();
+
 </script>
 
 <template>
-    <button type="button" class="btn btn-success" id="close" @click="closeSession">Cerrar<br>sesión</button>
+    <button type="button" class="btn btn-success" id="close" @click="closeSession" v-if="isAuthenticated.isAuthenticate">Cerrar<br>sesión</button>
 </template>
 
 <style lang="scss" scoped>
