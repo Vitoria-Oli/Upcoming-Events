@@ -23,26 +23,16 @@ const date = computed({
       <p id="date">{{ date }}</p>
       <nav class="navbar navbar-expand-lg navbar-light bg-$Blue momarnopad">
         <div class="container-fluid momarnopad">
-          <button
-            id="toggler"
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
+          <button id="toggler" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon navbar-dark"></span>
           </button>
-          <div
-            class="collapse navbar-collapse momarnopad"
-            id="navbarNavAltMarkup"
-          >
+          <div class="collapse navbar-collapse momarnopad" id="navbarNavAltMarkup">
             <div id="nav" class="navbar-nav momarnopad">
               <router-link to="/">Inicio</router-link>
               <router-link to="/UserRegister">Date de alta</router-link>
-              <router-link to="/AddEvents">Zona de usuario</router-link>
+              <router-link to="/Wellcome">Login</router-link>
             </div>
           </div>
         </div>
@@ -53,33 +43,40 @@ const date = computed({
 
 <style lang="scss" scoped>
 @import "../assets/scss/Variables.scss";
+
 header {
   .momarnopad {
     margin: 0;
     padding: 0;
   }
+
   background-color: $Blue;
   display: flex;
   align-items: center;
   height: 20.5vw;
   position: relative;
+
   figure {
     margin: 0;
     width: 48vw;
     margin-left: 2vw;
+
     img {
       height: 27vw;
     }
   }
+
   button#toggler {
     box-shadow: none;
     border: 2px solid rgba(255, 255, 255, 0.8);
     color: $White;
   }
+
   #info {
     display: flex;
     display: block;
     justify-content: center;
+
     #date {
       font-family: Dosis;
       color: $White;
@@ -88,10 +85,12 @@ header {
       right: 2vw;
       top: 5.5vw;
     }
+
     nav {
       position: absolute;
       bottom: 0;
       right: 0;
+
       a {
         font-family: Dosis;
         font-size: 2vw;
@@ -103,6 +102,7 @@ header {
         transition: all 0.4s;
         text-decoration: none;
         font-weight: 700;
+
         &.router-link-exact-active,
         &:hover {
           background-color: $White;
@@ -112,6 +112,7 @@ header {
     }
   }
 }
+
 @media (max-width: 850px) {
   header {
     #info {
