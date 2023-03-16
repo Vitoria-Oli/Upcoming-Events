@@ -1,29 +1,17 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { computed } from "@vue/reactivity";
-import { useAuthStore } from "../stores/auth-storage";
-
-window.onload = function formDate() {
-  let today = new Date();
-
-  let day = today.getDate();
-  let month = today.getMonth() + 1;
-  let year = today.getFullYear();
-
-  day = ('0' + day).slice(-2);
-  month = ('0' + month).slice(-2);
-
-  let printDate = `${day}/${month}/${year}`
-  document.getElementById("date").innerHTML = printDate
-
-};
-
+const date = computed({
+  get() {
+    let today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    let year = today.getFullYear();
+    day = ("0" + day).slice(-2);
+    month = ("0" + month).slice(-2);
     return `${day}/${month}/${year}`;
   },
 });
-
-const isAuthenticated = useAuthStore();
-
 </script>
 
 <template>
@@ -54,34 +42,44 @@ const isAuthenticated = useAuthStore();
             <div id="nav" class="navbar-nav momarnopad">
               <router-link to="/">Inicio</router-link>
               <router-link to="/UserRegister">Date de alta</router-link>
-              <router-link to="/AddEvents" v-if="isAuthenticated.roles=='ROLE_ADMIN'">Zona de usuario</router-link>
-              <router-link to="/Welcome" v-else>Login</router-link>
+              <router-link to="/AddEvents">Zona de usuario</router-link>
             </div>
           </div>
         </div>
-      </div>
-    </nav>
-  </div>
-</header>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <style lang="scss" scoped>
-@import '../assets/scss/Variables.scss';
-
-header{
-    background-color: $Blue;
-    display: flex;
-    align-items: center;
-
-    img{
-      width: 40vw;
+@import "../assets/scss/Variables.scss";
+header {
+  .momarnopad {
+    margin: 0;
+    padding: 0;
+  }
+  background-color: $Blue;
+  display: flex;
+  align-items: center;
+  height: 20.5vw;
+  position: relative;
+  figure {
+    margin: 0;
+    width: 48vw;
+    margin-left: 2vw;
+    img {
+      height: 27vw;
     }
-
-  #Info{
+  }
+  button#toggler {
+    box-shadow: none;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    color: $White;
+  }
+  #info {
     display: flex;
     display: block;
     justify-content: center;
-
     #date {
       font-family: Dosis;
       color: $White;
@@ -90,36 +88,39 @@ header{
       right: 2vw;
       top: 5.5vw;
     }
-
     nav {
       position: absolute;
       bottom: 0;
       right: 0;
-
-    
-    
-    label{
-      margin-left: 4vw;
+      a {
         font-family: Dosis;
-        font-weight: 800;
+        font-size: 2vw;
+        display: inline-block;
+        padding: 1vw 2vw;
+        border-radius: 5px 5px 0 0;
         color: $White;
-        font-size: 4vw;
-    }
-    nav{
-    padding: 0%;
-    border-radius: 40%;
-        a{        
-          font-size: 2vw;
-          font-family: Dosis; 
-          font-weight: 700;
-          color: $White;
-          &:active{
-            background-color: $White;
-            color: $Blue;
-          }
+        background-color: $Blue;
+        transition: all 0.4s;
+        text-decoration: none;
+        font-weight: 700;
+        &.router-link-exact-active,
+        &:hover {
+          background-color: $White;
+          color: $Blue;
         }
+      }
     }
   }
 }
-
+@media (max-width: 850px) {
+  header {
+    #info {
+      nav {
+        a {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
 </style>
