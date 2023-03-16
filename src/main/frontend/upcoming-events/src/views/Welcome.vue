@@ -6,6 +6,11 @@ import Footer from "../components/Footer.vue";
 import AuthService from "../assets/apis/authentication/authService";
 import router from "../router";
 
+function resetForm() {
+  document.getElementById("email").value = "";
+  document.getElementById("password").value = "";
+}
+
 let userName = "";
 let password = "";
 const store = useAuthStore();
@@ -53,7 +58,7 @@ const submitData = async () => {
           required
         />
         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button type="button" id="reset" class="btn btn-success">Borrar</button>
+          <button type="button" id="reset" class="btn btn-success" @click="resetForm()" >Borrar</button>
 
           <button
             type="submit"

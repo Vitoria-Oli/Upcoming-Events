@@ -7,10 +7,6 @@ import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 import CardsRecomendados from "../components/CardsRecomendados.vue";
 import CardsEvents from "../components/CardsEvents.vue";
-import { useEventsStore } from "../stores/Events";
-import { onBeforeMount } from "vue";
-import { computed } from "@vue/reactivity";
-import { ref } from "vue";
 import { useAuthStore } from "../stores/auth-storage";
 import CloseSessionButton from "../components/CloseSessionButton.vue";
 
