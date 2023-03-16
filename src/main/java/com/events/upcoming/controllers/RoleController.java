@@ -13,37 +13,39 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.events.upcoming.models.Event;
-import com.events.upcoming.services.EventService;
+import com.events.upcoming.models.Role;
+import com.events.upcoming.services.RoleService;
+
+
 
 @RestController
-@RequestMapping(path = "/api/events")
-public class EventController {
-    private EventService service;
+@RequestMapping(path = "/api/roles")
+public class RoleController {
+    private RoleService service;
     
-    public EventController (EventService service) {
+    public RoleController (RoleService service) {
         this.service = service;
     }
 
     @GetMapping("")
-    public List<Event> listAll(){
+    public List<Role> listAll(){
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Event listOne(@PathVariable Long id) {
+    public Role listOne(@PathVariable Long id) {
         return service.getOne(id);
     }
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id){
         service.delete(id);
     }
-    @PostMapping("/add")
+    @PostMapping("")
     @ResponseStatus(value = HttpStatus.CREATED)
-    public ResponseEntity<?> store(@RequestBody Event newevent){
+    public ResponseEntity<?> store(@RequestBody Role newrole){
         
         try{
-            return ResponseEntity.ok(service.save(newevent));
+            return ResponseEntity.ok(service.save(newrole));
         } catch(Exception e){
             return ResponseEntity.status(500).body("error");
     }
