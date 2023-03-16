@@ -55,6 +55,8 @@ const isAuthenticated = useAuthStore();
 @import "../assets/scss/Variables.scss";
 
 header {
+  width: 100%;
+  display: flex;
   .momarnopad {
     margin: 0;
     padding: 0;
@@ -134,4 +136,10 @@ header {
     }
   }
 }
+@media (max-width: 500px){
+  header #info #date {
+    right: 2vw;
+    top: 0.5vw;
+    }
+  }
 </style>

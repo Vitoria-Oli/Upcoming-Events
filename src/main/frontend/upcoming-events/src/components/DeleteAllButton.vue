@@ -12,8 +12,7 @@
 #delete{
     font-family: Dosis;
     background-color: $Red;
-    border: solid 3px $Red;
-    width: 6vw;
+    padding: 1vh 1.3vw;
 }
     
 </style>
