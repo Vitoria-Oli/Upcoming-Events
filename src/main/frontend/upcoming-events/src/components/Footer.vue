@@ -115,45 +115,7 @@ footer {
   @media (max-width: 850px) {
     footer {
       display: none;
-      //     flex-direction: column;
-      //     justify-content: center;
-      //     align-items: center;
-      //     padding-top: 15px;
-      //     figure {
-      //         display: none;
-      //     }
-      //     .infoFooter {
-      //       margin: 0;
-      //       img {
-      //         width: 50vw;
-      //       }
-      //       label {
-      //         font-size: 8vw;
-      //       }
-      //       p {
-      //         font-family: Dosis;
-      //         color: $White;
-      //         font-weight: bold;
-      //         font-size: 2.7vw;
-      //       }
-      //       .date {
-      //         font-size: 10vw;
-      //         line-height: 10vw;
-      //       }
-      //       a {
-      //         text-decoration: none;
-      //         color: $White;
-      //         &:hover {
-      //           text-decoration: underline;
-      //         }
-      //       }
-      //     }
-      //     #nav {
-      //       font-family: Dosis;
-      //       font-weight: normal;
-      //       color: $White;
-      //       margin-left: 13.3vw;
-      //     }
+     
     }
   }
 </style>

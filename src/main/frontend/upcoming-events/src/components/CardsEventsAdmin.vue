@@ -45,14 +45,12 @@ const props = defineProps({
         <v-card-text class="nomargin">
           <div class="quotas">
             <p class="nomargin">
-              <!-- Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b> -->
-              Quedan <b>12</b> <b>plazas </b>
+              Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
             </p>
           </div>
         </v-card-text>
       </div>
       <v-card-actions>
-        <!-- <v-btn class="apuntame">¡Apúntame!</v-btn> -->
       </v-card-actions>
     </div>
     <div class="botonesrecomendarmodificareliminar">
@@ -83,21 +81,18 @@ const props = defineProps({
               class="btn btn-secondary x-close"
               data-bs-dismiss="modal"
             >
-              <!-- X -->
+              X 
             </button>
             <p class="date">{{ event.date }} - {{ event.hour }}</p>
             <h3 class="eventTitle">{{ event.name }}</h3>
             <p class="text">
               {{ event.description }}
             </p>
-            <!-- <div class="infoPlaces">
+            <div class="infoPlaces">
               <p class="places">
                 Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
               </p>
-              <v-btn class="button">¡Apúntame!</v-btn>
-
-
-            </div> -->
+            </div> 
           </div>
         </div>
       </div>

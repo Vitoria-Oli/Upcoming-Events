@@ -97,6 +97,33 @@ https://www.figma.com/file/PJWYU3KWCZRRhICxbMbMPd/Upcoming-Events?node-id=0%3A1&
 
 ![Captura de pantalla (217)](https://user-images.githubusercontent.com/116894398/222677807-560650bc-4d3c-43a4-a824-aac9208f264a.png)
 
+## Customize configuration
+
+See [Vite Configuration Reference](https://vitejs.dev/config/).
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/)
+
+```sh
+npm run test:unit
+```
+# backend
+
+  ```sh
+mvn clean package
+```
+
 
 ### Autoras/es
 - [Vitoria Oliveira] (https://github.com/Vitoria-Oli)
