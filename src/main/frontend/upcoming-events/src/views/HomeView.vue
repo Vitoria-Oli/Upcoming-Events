@@ -49,7 +49,7 @@ const numPages = computed(() => {
   </div>
 
   <div id="EventsContainer">
-    <h2>Todo lo que puedes ver y hacer:</h2>
+    <h2 id="TitleCardsEvents">Todo lo que puedes ver y hacer:</h2>
     <div class="eventos">
       <CardsEvents v-for="event in eventsPaginated" :event="event"></CardsEvents>
     </div>
@@ -83,6 +83,7 @@ const numPages = computed(() => {
     margin-left: 8%;
     margin-bottom: 20px;
     font-weight: 700;
+    
   }
 
 
@@ -113,16 +114,33 @@ const numPages = computed(() => {
     }
   }
 
-  .eventos {
-    padding: 0 40px;
+  #EventsContainer{
+    // display: flex;
+    .eventos {
     display: grid;
+    justify-content: center;
     grid-template-columns: 1fr;
-    gap: 20px;
+    margin: 0 1% 0 1%;
   }
+  // #TitleCardsEvents{
+  //   // display: grid;
+  //   // grid-template-columns: auto;
+  //   // grid-template-rows: auto;
+  //   // grid-column: 1/1;
+  //   // grid-row: 1/1;
+  // }
+  }
+  
 
   @media (max-width: 1000px) {
     .eventos {
       grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 500px){
+    #TitleAndButton #ContainerButton {
+      margin-right: 6vw;
+      margin-top: 2vh;
     }
   }
 }

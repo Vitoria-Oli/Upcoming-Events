@@ -29,7 +29,6 @@ async function closeSession() {
 #close {
     font-family: Dosis;
     background-color: $PurpleButton;
-    border: solid 3px $PurpleButton;
-    width: 6vw;
+    padding: 1vh 1.3vw;
 }
 </style>

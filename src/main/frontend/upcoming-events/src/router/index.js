@@ -41,7 +41,7 @@ const router = createRouter({
       path: "/ModifyEvents",
       name: "ModifyEvents",
       component: () => import("../views/ModifyEvents.vue"),
-      meta: { requiresAuth: true },
+      // meta: { requiresAuth: true },
     }
   ],
 });

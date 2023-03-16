@@ -1,17 +1,25 @@
 <script setup>
 import { RouterLink } from "vue-router";
 import { computed } from "@vue/reactivity";
+import { useAuthStore } from "../stores/auth-storage";
+
 const date = computed({
   get() {
     let today = new Date();
+
     let day = today.getDate();
     let month = today.getMonth() + 1;
     let year = today.getFullYear();
+
     day = ("0" + day).slice(-2);
     month = ("0" + month).slice(-2);
+
     return `${day}/${month}/${year}`;
   },
 });
+
+const isAuthenticated = useAuthStore();
+
 </script>
 
 <template>
@@ -32,7 +40,9 @@ const date = computed({
             <div id="nav" class="navbar-nav momarnopad">
               <router-link to="/">Inicio</router-link>
               <router-link to="/UserRegister">Date de alta</router-link>
-              <router-link to="/Wellcome">Login</router-link>
+              <router-link to="/SelectedEvents" v-if="isAuthenticated.roles=='ROLE_USER'">Zona de usuario</router-link>
+              <router-link to="/AdminEvents" v-else-if="isAuthenticated.roles=='ROLE_ADMIN'">Zona de administración</router-link>
+              <router-link to="/Welcome" v-else>Login</router-link>
             </div>
           </div>
         </div>
@@ -45,6 +55,8 @@ const date = computed({
 @import "../assets/scss/Variables.scss";
 
 header {
+  width: 100%;
+  display: flex;
   .momarnopad {
     margin: 0;
     padding: 0;
@@ -124,4 +136,10 @@ header {
     }
   }
 }
+@media (max-width: 500px){
+  header #info #date {
+    right: 2vw;
+    top: 0.5vw;
+    }
+  }
 </style>
