@@ -1,15 +1,17 @@
 package com.events.upcoming.models;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "users")
@@ -19,25 +21,29 @@ public class User {
     @Column(name = "id_user")
     private Long id;
     @Column(nullable = false)
-    private String name;
-    @Column(nullable = false)
-    private String email;
+    private String username;
     @Column(nullable = false)
     private String password;
 
-    @ManyToMany
-    private List<Event> event;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "events_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "event_id"))
+    private Set<Event> events;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "roles_users", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
    
     public User() {
 
     }
 
-    public User(Long id, String name, String email, String password) {
+    public User(Long id, String username, String password, Set<Role> roles, Set<Event> events) {
         this.id = id;
-        this.name = name;
-        this.email = email;
+        this.username = username;
         this.password = password;
-        this.event = new ArrayList<>();
+        this.roles = roles;
+        this.events = events;
+
     }
 
     public Long getId() {
@@ -48,20 +54,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUserName(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -72,14 +70,25 @@ public class User {
         this.password = password;
     }
     
-    public List<Event> getEvents() {
-        return event;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setEvents(List<Event> event) {
-        this.event = event;
-    }   
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
     
-    
+    public Set<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(Set<Event> events) {
+        this.events = events;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id_user=" + id + ", username=" + username + ", password=" + password + roles + events + "]";
+    }
 }
 

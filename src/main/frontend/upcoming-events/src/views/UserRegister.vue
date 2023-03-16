@@ -1,47 +1,91 @@
 <script setup>
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
+import CloseSessionButton from "../components/CloseSessionButton.vue";
 
 function resetForm() {
-  document.getElementById("name").value = "";
-  document.getElementById("email").value = "";
+  document.getElementById("userName").value = "";
   document.getElementById("password").value = "";
-  document.getElementById("ConfirmPassword").value = "";
-  // incident.name = "";
-  // incident.email = "";
-  // incident.password = "";
-  // incident.ConfirmPassword ="";
+  document.getElementById("ConfirmPassword").value = ""
+  incident.userName = "";
+  incident.password = "";
 }
+
+let incident = {
+  userName: "",
+  password: "",
+};
+async function save() {
+  if (incident.userName == "") {
+    alert("email is needed");
+    return;
+  }
+  if (incident.password == "") {
+    alert("password is needed");
+    return;
+  }
+
+  const baseUrl = "http://localhost:8080";
+  let auth = "";
+  auth = encodeB64(incident.password);
+  incident.password = auth;
+
+  const payload = JSON.stringify(this.incident);
+  console.log(payload);
+  const url = "http://localhost:8080/api/register/add";
+  const r = await fetch(url, {
+    mode: "no-cors",
+    method: "POST",
+    body: payload,
+    headers: {
+      "Content-type": "application/json",
+    },
+  });
+
+  function encodeB64(password) {
+      const encodeData = window.btoa(`${password}`);
+      return encodeData;
+    }
+  
+  const response = await r;
+  console.log(response);
+  if (response) {
+    alert("Added " + incident.userName);
+    resetForm();
+  } else {
+    alert("An error has occurred.\nPlease try again after a few minutes.");
+  }
+}
+
+
 </script>
 
 <template>
   <Header></Header>
-  <h1>
-    Date de alta:
-    <span id="Subtitle"
-      >es necesario estar registrado para poder apuntarte a nuestros
-      eventos.</span
-    >
-  </h1>
+  <div id="TitleAndButton">
+    <h1>
+      Date de alta:
+      <span id="Subtitle"
+        >es necesario estar registrado para poder apuntarte a nuestros
+        eventos.</span
+      >
+    </h1>
+    <CloseSessionButton></CloseSessionButton>
+  </div>
   <form id="form">
     <div class="form-group">
-      <label for="name"><span class="Asterisk">* </span>Nombre</label>
-      <input
-        v-model="inputResetName"
-        type="text"
-        class="form-control"
-        id="name"
-        placeholder="Introduce tu nombre"
-        required
-      />
+      <label for="name" id="conditions"
+        ><span class="Asterisk">* </span>Todos los campos son
+        obligatorios</label
+      >
     </div>
     <div class="form-group">
-      <label for="email"><span class="Asterisk">* </span>E-mail</label>
+      <label for="userName"><span class="Asterisk">* </span>E-mail</label>
       <input
-        v-model="inputResetEmail"
+        v-model="incident.userName"
         type="email"
         class="form-control form-control-lg"
-        id="email"
+        id="userName"
         placeholder="Escribe un email"
         required
       />
@@ -49,7 +93,7 @@ function resetForm() {
     <div class="form-group">
       <label for="password"><span class="Asterisk">* </span>Contraseña</label>
       <input
-        v-model="inputResetPassword"
+        v-model="incident.password"
         type="password"
         class="form-control form-control-lg"
         id="password"
@@ -63,7 +107,7 @@ function resetForm() {
         ><span class="Asterisk">* </span>Repite tu contraseña</label
       >
       <input
-        v-model="inputResetConfirmPassword"
+        v-model="ConfirmPassword"
         type="password"
         class="form-control form-control-lg"
         id="ConfirmPassword"
@@ -72,14 +116,13 @@ function resetForm() {
       />
     </div>
     <div id="buttons-box">
-      
       <button type="button" class="btn btn-success" id="send" @click="save()">
         Suscribirse
       </button>
 
       <button
         type="button"
-        class="btn btn-warning"
+        class="btn btn-success"
         id="reset"
         @click="resetForm()"
       >
@@ -110,14 +153,21 @@ function resetForm() {
 
     .form-group {
       margin: 1% 0 1% 0;
-      label{
+      #conditions {
+        font-weight: normal;
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 4%;
+        margin-bottom: -6vh;
+      }
+      label {
         font-weight: bold;
         font-size: 1.4em;
-        .Asterisk{
-        color: $Red;
+        .Asterisk {
+          color: $Red;
+        }
       }
-      }
-      
+
       input {
         border: solid 2px $Blue;
       }
@@ -128,13 +178,34 @@ function resetForm() {
       justify-content: flex-start;
       align-items: center;
       gap: 20px;
-      #send{
+      #send {
         background-color: $GreenButton;
+        border: solid 3px $GreenButton;
       }
-      #reset{
+
+      #reset {
         background-color: $YellowButton;
+        border: solid 3px $YellowButton;
       }
     }
+  }
+  @media (max-width: 500px){
+    form .form-group label{
+      font-size: 1.1em;
+      
+    }
+    form .form-group #conditions{
+        margin-bottom: -5vh;
+      }
+  }
+  @media (max-width: 350px){
+    form .form-group label{
+      font-size: 1.0em;
+      
+    }
+    form .form-group #conditions{
+        margin-bottom: -4vh;
+      }
   }
 }
 </style>

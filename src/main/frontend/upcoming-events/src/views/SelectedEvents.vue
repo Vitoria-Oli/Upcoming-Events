@@ -1,19 +1,22 @@
 <script setup>
+import { useAuthStore } from "../stores/auth-storage";
+import { ref } from "vue";
+import { computed } from "@vue/reactivity";
 import { useEventsStore } from "../stores/Events";
 import { onBeforeMount } from "vue";
-import { computed } from "@vue/reactivity";
-import { ref } from "vue";
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
-import CardsRecomendados from "../components/CardsRecomendados.vue";
-import CardsEvents from "../components/CardsEvents.vue";
-import { useAuthStore } from "../stores/auth-storage";
+import CardEventsSelected from "../components/CardEventsSelected.vue";
 import CloseSessionButton from "../components/CloseSessionButton.vue";
+import DeleteAllButton from "../components/DeleteAllButton.vue";
+
 
 const store = useEventsStore();
 onBeforeMount(async () => {
   await store.fetchEvents();
 });
+
+const isAuthenticated = useAuthStore();
 
 let pageSize = 2;
 let pageNo = ref(1);
@@ -31,34 +34,23 @@ const numPages = computed(() => {
 
 <template>
   <Header></Header>
+
   <div id="RecomendadosContainer">
     <div id="TitleAndButton">
-      <h2>Nuestros recomendados:</h2>
-      <div id="ContainerButton"><CloseSessionButton></CloseSessionButton></div>
+      <h1>
+        ¡Bienvenido, {{ isAuthenticated.username }}!<br />
+        <span id="Subtitle">Estos son tus evento seleccionados:</span>
+      </h1>
+      <div id="ContainerButton">
+        <DeleteAllButton></DeleteAllButton>
+        <CloseSessionButton></CloseSessionButton>
+      </div>
     </div>
-    <v-sheet class="mx-auto" max-width="100%">
-      <v-slide-group
-        class="pa-4 arrows"
-        selected-class="bg-success"
-        show-arrows
-      >
-        <v-slide-group-item>
-          <CardsRecomendados
-            v-for="event in store.EventsRecommended"
-            :event="event"
-          ></CardsRecomendados>
-        </v-slide-group-item>
-      </v-slide-group>
-    </v-sheet>
-  </div>
-
-  <div id="EventsContainer">
-    <h2 id="TitleCardsEvents">Todo lo que puedes ver y hacer:</h2>
     <div class="eventos">
-      <CardsEvents
+      <CardEventsSelected
         v-for="event in eventsPaginated"
         :event="event"
-      ></CardsEvents>
+      ></CardEventsSelected>
     </div>
   </div>
   <v-pagination v-model="pageNo" :length="numPages"></v-pagination>
@@ -73,28 +65,23 @@ const numPages = computed(() => {
   #TitleAndButton {
     display: flex;
     justify-content: space-between;
-    margin-top: 2vw;
+    margin-top: 2%;
+    h1 {
+      color: $Blue;
+      margin: 1% 0 2% 5%;
+      font-weight: 700;
+      #Subtitle {
+        color: $Blue;
+        font-size: 0.6em;
+      }
+    }
     #ContainerButton {
       display: flex;
-      justify-content: flex-end;
+      gap: 7%;
       margin-right: 24vh;
-      margin-bottom: 3vh;
+      justify-content: center;
+      align-items: center;
     }
-  }
-
-  h2 {
-    color: $Blue;
-    margin-top: 40px;
-    margin-left: 8%;
-    margin-bottom: 20px;
-    font-weight: 700;
-  }
-
-  .eventosRecomendados {
-    padding: 0 40px;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
   }
 
   .v-slide-group__content {
@@ -117,26 +104,16 @@ const numPages = computed(() => {
     }
   }
 
-  #EventsContainer{
-    
-    .eventos {
+  .eventos {
+    padding: 0 40px;
     display: grid;
-    justify-content: center;
     grid-template-columns: 1fr;
-    margin: 0 1% 0 1%;
-  }
-
+    gap: 20px;
   }
 
   @media (max-width: 1000px) {
     .eventos {
       grid-template-columns: 1fr;
-    }
-  }
-  @media (max-width: 500px) {
-    #TitleAndButton #ContainerButton {
-      margin-right: 6vw;
-      margin-top: 2vh;
     }
   }
 }

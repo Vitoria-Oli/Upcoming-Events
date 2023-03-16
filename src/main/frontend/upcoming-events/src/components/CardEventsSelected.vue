@@ -1,5 +1,4 @@
 <script setup>
-import { computed } from '@vue/reactivity';
 const props = defineProps({
   event: {
     type: Object,
@@ -46,7 +45,7 @@ const randomImage = computed({
         </div>
       </v-card-text>
       <v-card-actions>
-        <v-btn class="apuntame">¡Apúntame!</v-btn>
+        <v-btn class="apuntame">¡Bórrame!</v-btn>
       </v-card-actions>
     </div>
   </v-card>
@@ -74,7 +73,7 @@ const randomImage = computed({
               <p class="places">
                 Quedan <b>12</b> plazas de <b>{{ event.capacity }}</b>
               </p>
-              <v-btn class="button">¡Apúntame!</v-btn>
+              <v-btn class="button">¡Bórrame!</v-btn>
             </div>
           </div>
         </div>

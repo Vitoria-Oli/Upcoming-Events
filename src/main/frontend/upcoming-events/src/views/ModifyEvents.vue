@@ -2,7 +2,7 @@
 import Header from "../components/Header.vue";
 import Footer from "../components/Footer.vue";
 
-function resetForm() { 
+function resetForm() {
   document.getElementById("dateevent").value = "";
   document.getElementById("hora").value = "";
   document.getElementById("prueba").value = "";
@@ -10,13 +10,13 @@ function resetForm() {
   document.getElementById("description").value = "";
   document.getElementById("plazas").value = "";
   document.getElementById("file").value = "";
-
+  
 }
 </script>
 
 <template>
   <Header></Header>
-  <h1>Nuevo Evento</h1>
+  <h1>Modificar Evento</h1>
 
 
   <form id="form">
@@ -25,14 +25,14 @@ function resetForm() {
 
       <div class="dateFields">
         <label for="name"><span class="Asterisk">* </span>Introduce la fecha</label>
-        <input type="date" class="form-control " id="dateevent" />
+        <input type="date" class="form-control" id="dateevent" />
       </div>
       <div class="dateFields">
         <label for="name"><span class="Asterisk">* </span>Añade la hora</label>
         <input type="text" class="form-control form-control-lg" id="hora" />
       </div>
       <div class="check">
-        <input type="checkbox" class="prueba" id="prueba" />
+        <input type="checkbox" class="prueba" id="prueba"/>
         <label for="name"> Recomendado</label>
       </div>
     </div>
@@ -193,4 +193,6 @@ input {
 
 }
 </style>
+
+
 
